@@ -1,0 +1,2 @@
+/Users/raheeshmuhamed/Desktop/myPortfolio/my-portfolio/public filter=lfs diff=lfs merge=lfs -text
+*.mp4 filter=lfs diff=lfs merge=lfs -text
