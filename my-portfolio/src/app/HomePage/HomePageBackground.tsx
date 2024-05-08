@@ -9,7 +9,7 @@ export default function HomePageBackground() {
       loop
       playsInline
     >
-      <source src="/beach_waves.mp4" type="video/mp4" />
+      <source src="/beach_waves.mov" type="video/mp4" />
     </video>
   );
 }

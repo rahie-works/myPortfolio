@@ -5,7 +5,7 @@ export default function HomePageContents() {
         Hi, welcome to my Portfolio.
       </h3>
       <div className="flex flex-col lg:flex lg:flex-row md:items-center justify-center items-center">
-        <h3 className="text-2xl text-gray-900 animate-fade-up animate-ease-in mr-5 font-subtitles">
+        <h3 className="text-md sm:text-2xl text-gray-900 animate-fade-up animate-ease-in mr-5 font-subtitles">
           Introducing{" "}
         </h3>
         <h1 className="text-4xl sm:text-8xl text-gray-900 animate-fade-up animate-ease-in font-name">
