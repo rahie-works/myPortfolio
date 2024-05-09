@@ -13,7 +13,7 @@ export default function HomePageContents() {
         </h1>
       </div>
       <div className="justify-center items-center mt-20">
-        <h2 className="text-xl sm:text-2xl text-gray-900 animate-fade-up animate-ease-in font-subtitles">
+        <h2 className="text-lg sm:text-2xl text-gray-900 animate-fade-up animate-ease-in font-subtitles">
           Software Engineer since 2021, who slays bugs by day and catches waves
           by sunset..!{" "}
         </h2>
