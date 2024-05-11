@@ -38,7 +38,7 @@ export default function HomePageNavigation({
 
   return (
     <div className="min-h-screen flex flex-col justify-center items-center">
-      <div className="flex flex-row absolute top-0 left-1/2 transform -translate-x-1/2 justify-between items-center bg-gradient-to-b from-gray-900 to-white-500 w-full h-1/6 pl-10 sm:pl-20">
+      <div className="flex flex-row absolute top-0 left-1/2 transform -translate-x-1/2 justify-between items-center bg-gradient-to-b from-gray-900 to-white-500 w-full h-1/6 pl-10 sm:pl-20 animate-fade animate-ease-in">
         <div className="flex flex-row justify-around w-1/2 sm:w-1/3 h-1/6">
           <h2 className="text-md sm:text-xl text-white font-subtitles">
             About
