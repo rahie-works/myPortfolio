@@ -14,7 +14,7 @@ export default function HomePageBackground({ theme }: { theme: boolean }) {
       loop
       playsInline
     >
-      <source src="/beach_waves.mov" type="video/mp4" />
+      <source src="/night_sky.mp4" type="video/mp4" />
     </video>
   );
 }
