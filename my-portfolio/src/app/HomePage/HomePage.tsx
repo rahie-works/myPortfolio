@@ -1,48 +1,40 @@
 "use client";
 import React from "react";
-import HomePageBackground from "./HomePageBackground";
-import HomePageContents from "./HomePageContents";
-import HomePageNavigation, { THEMES } from "./HomePageNavigation";
-import HomePageScrollAction from "./HomePageScrollAction";
-import { Theme } from "./types";
+import HomePageNavigation from "./HomePageNavigation";
+import ContentsPage from "../NavigationStack/ContentsPage";
+import ContentsBackground from "../NavigationStack/ContentsBackground";
 
-export default function HomePage({
-  setGlobalTheme,
-}: {
-  setGlobalTheme: Function;
-}) {
-  const [theme, setTheme] = React.useState(true);
-  const [showButton, setShowButton] = React.useState(true);
+export default function HomePage() {
+  const [backgroundVideo, setBackgroundVideo] =
+    React.useState("/night_sky.mp4");
+  const [tab, setTab] = React.useState("Home");
 
-  const updateTheme = (theme: Theme) => {
-    setGlobalTheme(theme);
-    setTheme(theme.icon === THEMES.DARK.icon);
-  };
-
-  React.useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollPos = window.scrollY;
-      setShowButton(currentScrollPos === 0);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
+  const selectedTab = (tab: string) => {
+    switch (tab) {
+      case "About":
+        setBackgroundVideo("");
+        setTab("About");
+        break;
+      case "Career":
+        setBackgroundVideo("/ocean_waves.mp4");
+        setTab("Career");
+        break;
+      case "Projects":
+        setBackgroundVideo("/ocean_waves.mp4");
+        setTab("Projects");
+        break;
+      default:
+        setBackgroundVideo("/night_sky.mp4");
+        setTab("Home");
+        break;
+    }
   };
 
   return (
     <div className="bg-gray-900 min-h-screen flex items-center justify-center">
-      <HomePageBackground theme={theme} />
-      <HomePageNavigation themeSetter={updateTheme} />
-      <HomePageContents />
-      <HomePageScrollAction showButton={showButton} />
+      <ContentsBackground background={backgroundVideo} />
+      <ContentsPage tab={tab} />
+      <HomePageNavigation tab={selectedTab} />
     </div>
   );
 }
