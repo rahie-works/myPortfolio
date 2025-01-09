@@ -9,10 +9,8 @@ export default function HomePageNavigation(props: any) {
   };
 
   return (
-    <div className="min-h-screen flex flex-col justify-center items-center">
-      <div className="flex flex-row w-full absolute bottom-0 left-1/2 transform -translate-x-1/2 justify-center items-center h-1/6 animate-fade animate-ease-in">
-        <NavigationTabs tab={selectedtab} />
-      </div>
+    <div className="flex w-full absolute z-50 top-10 left-1/2 transform -translate-x-1/2 justify-center items-center animate-fade animate-ease-in">
+      <NavigationTabs tab={selectedtab} />
     </div>
   );
 }

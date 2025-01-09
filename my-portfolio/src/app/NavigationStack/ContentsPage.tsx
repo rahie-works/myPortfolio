@@ -1,27 +1,43 @@
 "use-client";
-import React, { ReactElement } from "react";
-import AboutContent from "../AboutPage/AboutPage";
-import HomePageContents from "../HomePage/HomePageContents";
+import React from "react";
+import HomePageContents from "../HomePage/HomePage";
+import CareerContents from "../CareerPage/CareerContents";
+import HomePageNavigation from "../HomePage/HomePageNavigation";
+import ProjectsPages from "../Projects/ProjectsPage";
+import ToolsPage from "@/app/Tools/ToolsPage";
+import BlogPage from "../Blog/BlogPage";
+import AboutPage from "../AboutPage/AboutPage";
 
-export default function ContentsPage({ tab }: { tab: string }) {
-  const [content, setContent] = React.useState<ReactElement>();
+export default function ContentsPage() {
+  const [contentPage, setContentPage] = React.useState(<HomePageContents />);
 
-  const showContents = (tab: string) => {
+  const selectedTab = (tab: string) => {
     switch (tab) {
-      case "Careers":
-        return <AboutContent />;
-      case "Project":
-        return <AboutContent />;
+      case "Career":
+        setContentPage(<CareerContents />);
+        return;
+      case "Projects":
+        setContentPage(<ProjectsPages />);
+        return;
+      case "Tools":
+        setContentPage(<ToolsPage />);
+        return;
+      case "Blog":
+        setContentPage(<BlogPage />);
+        return;
       case "About":
-        return <AboutContent />;
+        setContentPage(<AboutPage />);
+        return;
       default:
-        return <HomePageContents />;
+        setContentPage(<HomePageContents />);
+        return;
     }
   };
 
-  React.useEffect(() => {
-    setContent(showContents(tab));
-  }, [tab]);
-
-  return <div className="w-full">{content}</div>;
+  return (
+    <div className="absolute w-full h-full">
+      <HomePageNavigation tab={selectedTab} />
+      {contentPage}
+    </div>
+  );
 }
