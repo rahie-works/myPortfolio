@@ -4,6 +4,12 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
@@ -31,5 +37,17 @@ body {
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+  .max-container {
+    @apply mx-auto max-w-[1440px];
+  }
+
+  .padding-container {
+    @apply px-6 lg:px-20 3xl:px-0;
+  }
+
+  .underline-offset {
+    text-decoration: underline;
+    text-underline-offset: 4px;
   }
 }
