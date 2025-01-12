@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
-import ContentsPage from "./NavigationStack/ContentsPage";
+import ContentsContainer from "./NavigationStack/ContentsContainer";
 
 export default function Home() {
-  return <ContentsPage />;
+  return <ContentsContainer />;
 }

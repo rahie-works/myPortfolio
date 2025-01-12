@@ -2,13 +2,13 @@
 import React from "react";
 import HomePageContents from "../HomePage/HomePage";
 import CareerContents from "../CareerPage/CareerContents";
-import HomePageNavigation from "../HomePage/HomePageNavigation";
 import ProjectsPages from "../Projects/ProjectsPage";
 import ToolsPage from "@/app/Tools/ToolsPage";
 import BlogPage from "../Blog/BlogPage";
 import AboutPage from "../AboutPage/AboutPage";
+import NavigationTabs from "./NavigationTabs";
 
-export default function ContentsPage() {
+export default function ContentsContainer() {
   const [contentPage, setContentPage] = React.useState(<HomePageContents />);
 
   const selectedTab = (tab: string) => {
@@ -36,7 +36,9 @@ export default function ContentsPage() {
 
   return (
     <div className="absolute w-full h-full">
-      <HomePageNavigation tab={selectedTab} />
+      <div className="flex w-full absolute z-50 top-10 left-1/2 transform -translate-x-1/2 justify-center items-center animate-fade animate-ease-in">
+        <NavigationTabs tab={selectedTab} />
+      </div>
       {contentPage}
     </div>
   );
