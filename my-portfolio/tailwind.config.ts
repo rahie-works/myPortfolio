@@ -13,6 +13,19 @@ const config: Config = {
         subtitles: ["Briem Hand", "cursive"],
         name: ["Briem Hand"],
       },
+      animation: {
+        marquee: "marquee 15s linear infinite",
+      },
+      keyframes: {
+        marquee: {
+          "0%": {
+            transform: "translateX(0)",
+          },
+          "100%": {
+            transform: "translateX(-148%)",
+          },
+        },
+      },
     },
   },
   plugins: [require("tailwindcss-animated")],
