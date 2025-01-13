@@ -3,12 +3,12 @@ import { Raleway } from "next/font/google";
 import { BiHomeAlt2, BiSolidHomeAlt2 } from "react-icons/bi";
 import { TbBriefcase2, TbBriefcase2Filled } from "react-icons/tb";
 import { FaRegFolderOpen, FaRegFolder } from "react-icons/fa6";
-import { MdPerson, MdPersonSearch } from "react-icons/md";
 import { MdOutlineChat, MdMarkUnreadChatAlt } from "react-icons/md";
 import { AiOutlineCode, AiFillCode } from "react-icons/ai";
+import { MdMailOutline, MdMail } from "react-icons/md";
 
 const raleway = Raleway({ subsets: ["latin"] });
-const TABS = ["Home", "Career", "Projects", "Tools", "Blog", "About"];
+const TABS = ["Home", "Career", "Projects", "Tools", "Blog", "Connect"];
 
 export default function NavigationTabs(props: any) {
   const [activeTab, setActiveTab] = useState("Home");
@@ -52,11 +52,11 @@ export default function NavigationTabs(props: any) {
         ) : (
           <MdOutlineChat />
         );
-      case "About":
-        return activeTab === "About" ? (
-          <MdPersonSearch className="text-blue-500" />
+      case "Connect":
+        return activeTab === "Connect" ? (
+          <MdMail className="text-blue-500" />
         ) : (
-          <MdPerson />
+          <MdMailOutline />
         );
     }
   };

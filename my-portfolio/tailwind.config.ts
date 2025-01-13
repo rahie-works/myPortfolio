@@ -19,7 +19,7 @@ const config: Config = {
       keyframes: {
         marquee: {
           "0%": {
-            transform: "translateX(0)",
+            transform: "translateX(10)",
           },
           "100%": {
             transform: "translateX(-148%)",

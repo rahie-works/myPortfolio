@@ -10,11 +10,11 @@ const HomePageSummaryHeading = () => {
     <>
       <div className="w-full h-screen text-5xl text-white font-bold flex flex-col ml-20">
         <span
-          className={`${raleway.className} animate-fade-up animate-ease-in`}
+          className={`h-1/2 ${raleway.className} animate-fade-up animate-ease-in`}
         >
           {`</ Building Solutions`},
         </span>
-        <span className=" animate-fade-up animate-ease-in bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 bg-clip-text text-transparent">
+        <span className="h-full animate-fade-up animate-ease-in bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 bg-clip-text text-transparent">
           {`Crafting the Future />`}
         </span>
       </div>

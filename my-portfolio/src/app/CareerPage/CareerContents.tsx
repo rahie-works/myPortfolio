@@ -1,8 +1,11 @@
 import Image from "next/image";
+import Lottie from "lottie-react";
+
 import {
   ExpDataType,
   ExperienceData,
   ExpertiseImageList,
+  animationData,
 } from "./ExperienceData";
 import { Raleway } from "next/font/google";
 import React, { useRef, useEffect } from "react";
@@ -34,7 +37,7 @@ const DateStringBlocks = (props: any) => {
 
 const ExperienceBlock = (props: any) => {
   return (
-    <div className="w-full h-full flex justify-center">
+    <div className="w-full h-full flex justify-center z-10">
       <DateStringBlocks data={props.data} />
       <div
         key={props.key}
@@ -80,9 +83,9 @@ const ExperienceLargeData = () => {
         className={`w-1/3 h-full text-9xl text-white flex flex-col justify-center items-center`}
       >
         <div
-          className={`text-8xl pb-2 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent`}
+          className={`text-8xl font-bold pb-2 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent`}
         >
-          + {ExperienceNumber.expYears}
+          +{ExperienceNumber.expYears}
         </div>
         <div className={`text-xl font-bold`}>Years of Experience</div>
       </div>
@@ -90,9 +93,9 @@ const ExperienceLargeData = () => {
         className={`w-1/3 h-full p-10 text-9xl text-white flex flex-col justify-center items-center`}
       >
         <div
-          className={`text-8xl pb-2 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent`}
+          className={`text-8xl font-bold pb-2 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent`}
         >
-          + {ExperienceNumber.projects}
+          +{ExperienceNumber.projects}
         </div>
         <div className={`text-xl font-bold`}>Projects Completed</div>
       </div>
@@ -100,9 +103,9 @@ const ExperienceLargeData = () => {
         className={`w-1/3 h-full p-10 text-9xl text-white flex flex-col justify-center items-center`}
       >
         <div
-          className={`text-8xl pb-2 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent`}
+          className={`text-8xl font-bold pb-2 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent`}
         >
-          + {ExperienceNumber.clients}
+          +{ExperienceNumber.clients}
         </div>
         <div className={`text-xl font-bold`}>Satisfied Clients</div>
       </div>

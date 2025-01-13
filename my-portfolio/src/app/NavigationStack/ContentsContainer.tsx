@@ -5,8 +5,8 @@ import CareerContents from "../CareerPage/CareerContents";
 import ProjectsPages from "../Projects/ProjectsPage";
 import ToolsPage from "@/app/Tools/ToolsPage";
 import BlogPage from "../Blog/BlogPage";
-import AboutPage from "../AboutPage/AboutPage";
 import NavigationTabs from "./NavigationTabs";
+import ConnectPage from "../ConnectPage/ConnectPage";
 
 export default function ContentsContainer() {
   const [contentPage, setContentPage] = React.useState(<HomePageContents />);
@@ -25,8 +25,8 @@ export default function ContentsContainer() {
       case "Blog":
         setContentPage(<BlogPage />);
         return;
-      case "About":
-        setContentPage(<AboutPage />);
+      case "Connect":
+        setContentPage(<ConnectPage />);
         return;
       default:
         setContentPage(<HomePageContents />);

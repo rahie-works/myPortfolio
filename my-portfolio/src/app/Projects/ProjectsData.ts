@@ -3,6 +3,7 @@ type ProjectDataType = {
   repo: string;
   images: Array<string>;
   desc: string;
+  video?: string;
 };
 
 export const ProjectData: ProjectDataType[] = [
@@ -14,7 +15,11 @@ export const ProjectData: ProjectDataType[] = [
       "/projects/SpookyMathGame_1.jpeg",
       "/projects/SpookyMathGame_1.jpeg",
     ],
-    desc: "",
+    video: "/projects/adharva.mov",
+    desc: `A React-based web app built as the primary information hub for Corbiz Solutions' commerce institute. 
+    It showcases available courses and allows users to express interest via a contact form integrated with EmailJS. 
+    The app's content is dynamically managed using Contentful, enabling seamless updates. 
+    Designed with scalability in mind, the platform serves as the foundation for future features like online classes and expanded user interactions.`,
   },
   {
     name: "Spooky Math Game",
@@ -24,7 +29,10 @@ export const ProjectData: ProjectDataType[] = [
       "/projects/SpookyMathGame_1.jpeg",
       "/projects/SpookyMathGame_1.jpeg",
     ],
-    desc: "",
+    desc: `A React-based web app built as the primary information hub for Corbiz Solutions' commerce institute. 
+    It showcases available courses and allows users to express interest via a contact form integrated with EmailJS. 
+    The app's content is dynamically managed using Contentful, enabling seamless updates. 
+    Designed with scalability in mind, the platform serves as the foundation for future features like online classes and expanded user interactions.`,
   },
   {
     name: "Scrambled Words",
@@ -32,15 +40,20 @@ export const ProjectData: ProjectDataType[] = [
     images: [
       "/projects/ScrambledWords_1.png",
       "/projects/ScrambledWords_2.png",
-      "/projects/ScrambledWords_3.png",
     ],
-    desc: "",
+    desc: `A React-based web app built as the primary information hub for Corbiz Solutions' commerce institute. 
+    It showcases available courses and allows users to express interest via a contact form integrated with EmailJS. 
+    The app's content is dynamically managed using Contentful, enabling seamless updates. 
+    Designed with scalability in mind, the platform serves as the foundation for future features like online classes and expanded user interactions.`,
   },
   {
     name: "My Goal",
     repo: "https://github.com/rahie-works/myGoals",
     images: ["/projects/MyGoal_1.png", "/projects/MyGoal_2.png"],
-    desc: "",
+    desc: `A React-based web app built as the primary information hub for Corbiz Solutions' commerce institute. 
+    It showcases available courses and allows users to express interest via a contact form integrated with EmailJS. 
+    The app's content is dynamically managed using Contentful, enabling seamless updates. 
+    Designed with scalability in mind, the platform serves as the foundation for future features like online classes and expanded user interactions.`,
   },
   {
     name: "Hungry Rabbit",
@@ -50,7 +63,10 @@ export const ProjectData: ProjectDataType[] = [
       "/projects/HungryRabbit_2.png",
       "/projects/HungryRabbit_3.png",
     ],
-    desc: "",
+    desc: `A React-based web app built as the primary information hub for Corbiz Solutions' commerce institute. 
+    It showcases available courses and allows users to express interest via a contact form integrated with EmailJS. 
+    The app's content is dynamically managed using Contentful, enabling seamless updates. 
+    Designed with scalability in mind, the platform serves as the foundation for future features like online classes and expanded user interactions.`,
   },
   {
     name: "Expense Tracker",
@@ -60,6 +76,9 @@ export const ProjectData: ProjectDataType[] = [
       "/projects/ExpenseTracker_2.jpeg",
       "/projects/ExpenseTracker_3.jpeg",
     ],
-    desc: "",
+    desc: `A React-based web app built as the primary information hub for Corbiz Solutions' commerce institute. 
+    It showcases available courses and allows users to express interest via a contact form integrated with EmailJS. 
+    The app's content is dynamically managed using Contentful, enabling seamless updates. 
+    Designed with scalability in mind, the platform serves as the foundation for future features like online classes and expanded user interactions.`,
   },
 ];
