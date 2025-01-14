@@ -1,15 +1,30 @@
-import Image from "next/image";
-import Lottie from "lottie-react";
-
-import {
-  ExpDataType,
-  ExperienceData,
-  ExpertiseImageList,
-  animationData,
-} from "./ExperienceData";
+import { ExperienceData } from "./ExperienceData";
 import { Raleway } from "next/font/google";
-import React, { useRef, useEffect } from "react";
+import React from "react";
 import { LiaExternalLinkAltSolid } from "react-icons/lia";
+import {
+  FaReact,
+  FaApple,
+  FaJsSquare,
+  FaGithub,
+  FaSwift,
+  FaPython,
+  FaAws,
+  FaGitlab,
+  FaDocker,
+  FaFigma,
+} from "react-icons/fa";
+import { TbApi } from "react-icons/tb";
+import { IoLogoAndroid } from "react-icons/io";
+import {
+  SiContentful,
+  SiTypescript,
+  SiSap,
+  SiTailwindcss,
+  SiJira,
+} from "react-icons/si";
+import { RiNextjsFill } from "react-icons/ri";
+import { FaNode } from "react-icons/fa6";
 
 const raleway = Raleway({ subsets: ["latin"] });
 
@@ -36,6 +51,51 @@ const DateStringBlocks = (props: any) => {
 };
 
 const ExperienceBlock = (props: any) => {
+  const returnTechIcon = (eachTech: string) => {
+    const className = "text-white text-4xl cursor-pointer";
+    const classNameNode = "text-white text-6xl cursor-pointer";
+    switch (eachTech) {
+      case "react-native":
+      case "react":
+        return <FaReact title={eachTech} className={className} />;
+      case "android":
+        return <IoLogoAndroid title={eachTech} className={className} />;
+      case "ios":
+        return <FaApple title={eachTech} className={className} />;
+      case "contentful":
+        return <SiContentful title={eachTech} className={className} />;
+      case "javascript":
+        return <FaJsSquare title={eachTech} className={className} />;
+      case "github":
+        return <FaGithub title={eachTech} className={className} />;
+      case "swift":
+        return <FaSwift title={eachTech} className={className} />;
+      case "python":
+        return <FaPython title={eachTech} className={className} />;
+      case "aws":
+        return <FaAws title={eachTech} className={className} />;
+      case "gitlab":
+        return <FaGitlab title={eachTech} className={className} />;
+      case "REST":
+        return <TbApi title={eachTech} className={className} />;
+      case "typescript":
+        return <SiTypescript title={eachTech} className={className} />;
+      case "nextjs":
+        return <RiNextjsFill title={eachTech} className={className} />;
+      case "sap":
+        return <SiSap title={eachTech} className={className} />;
+      case "docker":
+        return <FaDocker title={eachTech} className={className} />;
+      case "tailwind":
+        return <SiTailwindcss title={eachTech} className={className} />;
+      case "figma":
+        return <FaFigma title={eachTech} className={className} />;
+      case "jira":
+        return <SiJira title={eachTech} className={className} />;
+      case "node":
+        return <FaNode title={eachTech} className={classNameNode} />;
+    }
+  };
   return (
     <div className="w-full h-full flex justify-center z-10">
       <DateStringBlocks data={props.data} />
@@ -60,6 +120,14 @@ const ExperienceBlock = (props: any) => {
               title={`Click to check ${props.data.company}`}
               onClick={() => window.open(props.data.companyUrl, "_blank")}
             />
+          </div>
+
+          <p className="text-white mt-8 text-sm">TECH USED</p>
+          <div className="w-1/2 h-[2px] justify-left bg-white mt-1"></div>
+          <div className="w-full h-1/3 grid grid-cols-3 gap-2 justify-center items-center mt-2 p-4">
+            {props.data.tech.map((eachTech: string) =>
+              returnTechIcon(eachTech)
+            )}
           </div>
         </div>
         <div className={`w-2/3`}>
