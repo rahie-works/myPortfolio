@@ -29,7 +29,7 @@ export const TestimonialCards = () => {
     setInterval(() => {
       updateTestimonial("right");
     }, 5000);
-  }, [changeTestimonial]);
+  }, [changeTestimonial, updateTestimonial]);
 
   return (
     <div className="w-full h-full mt-5">

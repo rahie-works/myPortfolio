@@ -7,7 +7,7 @@ const BlogHeadingContainer = () => {
       className={`relative w-1/2 h-full text-8xl text-white flex flex-col font-bold ${raleway.className} animate-fade-up animate-ease-in justify-center`}
     >
       <span className={`${raleway.className} animate-fade-up animate-ease-in`}>
-        Can't stop
+        Cant stop
       </span>
       <span className="text-blue-500 animate-fade-up animate-ease-in">
         Thinking...

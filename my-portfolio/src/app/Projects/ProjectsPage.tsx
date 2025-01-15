@@ -22,6 +22,7 @@ const ProjectsInfoContainer = () => {
       <div className="w-3/4 h-full flex justify-evenly">
         {MainProjects.map((eachproject, index) => (
           <div
+            key={index}
             className={`w-1/3 h-full p-2 flex flex-col rounded-xl shadow-md transition-all duration-500 text-white text-center cursor-pointer hover:scale-105 hover:shadow-lg hover:bg-gray-900 text-3xl ${raleway.className}}`}
             onClick={() => window.open(eachproject.repo, "_blank")}
           >

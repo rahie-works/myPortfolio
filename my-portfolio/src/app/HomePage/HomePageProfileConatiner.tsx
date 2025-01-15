@@ -3,11 +3,12 @@ import { FaGithub } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
 import { FaStackOverflow } from "react-icons/fa";
 import { HomePageProfileSummaryContainer } from "./HomePageProfileSummaryConatiner";
+import Image from "next/image";
 
 const HomePageProfileInfoContainer = () => {
   return (
     <div className="w-1/4 h-full flex flex-col bg-gradient-to-b from-transparent to-gray-900 shadow-lg rounded-lg animate-fade-up animate-ease-in justify-center items-center">
-      <img
+      <Image
         src="/me.png"
         className="rounded-xl"
         alt="profile_photo"

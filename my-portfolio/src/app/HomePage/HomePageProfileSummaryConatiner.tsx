@@ -2,6 +2,7 @@ import { Raleway } from "next/font/google";
 import { CompanyList } from "./HomePageConstants";
 import { FaArrowRight } from "react-icons/fa6";
 import { TestimonialCards } from "./TestimonialCards";
+import Image from "next/image";
 
 const raleway = Raleway({ subsets: ["latin"] });
 
@@ -61,7 +62,8 @@ const HomePageCompanyPortfolio = () => {
       </p>
       <div className="w-full flex h-full gap-20 pb-5 animate-marquee whitespace-nowrap">
         {CompanyList.map((eachCompany, index) => (
-          <img
+          <Image
+            alt={eachCompany}
             key={index}
             className="text-white text-2xl filter grayscale"
             src={eachCompany}
@@ -69,7 +71,8 @@ const HomePageCompanyPortfolio = () => {
           />
         ))}
         {CompanyList.map((eachCompany, index) => (
-          <img
+          <Image
+            alt={eachCompany}
             key={index}
             className="text-white text-2xl filter grayscale"
             src={eachCompany}

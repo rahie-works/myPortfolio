@@ -2,16 +2,20 @@
   "name": "my-portfolio",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://rahie-works.github.io/myPortfolio",
   "scripts": {
     "dev": "concurrently \"next dev\" \"sleep 2 && open http://localhost:3000\"",
-    "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "deploy": "yarn build && yarn export && gh-pages -d out",
+    "build": "next build",
+    "export": "output: export"
   },
   "dependencies": {
     "@emailjs/browser": "^4.3.3",
     "@next/font": "^14.2.3",
     "framer-motion": "^11.18.0",
+    "gh-pages": "^6.3.0",
     "lottie-react": "^2.4.0",
     "material-symbols": "^0.17.4",
     "next": "14.2.3",
