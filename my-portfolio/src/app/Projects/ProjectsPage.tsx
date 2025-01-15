@@ -45,7 +45,7 @@ const ProjectsInfoContainer = () => {
             window.open("https://github.com/rahie-works", "_blank")
           }
         >
-          Find my minor projects
+          Find my archived projects
         </p>
         <LiaExternalLinkAltSolid className="ml-3 text-xl" />
       </div>

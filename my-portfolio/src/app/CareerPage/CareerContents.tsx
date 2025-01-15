@@ -1,30 +1,10 @@
 import { ExperienceData } from "./ExperienceData";
 import { Raleway } from "next/font/google";
+import { motion } from "framer-motion";
+
 import React from "react";
 import { LiaExternalLinkAltSolid } from "react-icons/lia";
-import {
-  FaReact,
-  FaApple,
-  FaJsSquare,
-  FaGithub,
-  FaSwift,
-  FaPython,
-  FaAws,
-  FaGitlab,
-  FaDocker,
-  FaFigma,
-} from "react-icons/fa";
-import { TbApi } from "react-icons/tb";
-import { IoLogoAndroid } from "react-icons/io";
-import {
-  SiContentful,
-  SiTypescript,
-  SiSap,
-  SiTailwindcss,
-  SiJira,
-} from "react-icons/si";
-import { RiNextjsFill } from "react-icons/ri";
-import { FaNode } from "react-icons/fa6";
+import { getLogo } from "../utils/GetLogoUtil";
 
 const raleway = Raleway({ subsets: ["latin"] });
 
@@ -51,53 +31,16 @@ const DateStringBlocks = (props: any) => {
 };
 
 const ExperienceBlock = (props: any) => {
-  const returnTechIcon = (eachTech: string) => {
-    const className = "text-white text-4xl cursor-pointer";
-    const classNameNode = "text-white text-6xl cursor-pointer";
-    switch (eachTech) {
-      case "react-native":
-      case "react":
-        return <FaReact title={eachTech} className={className} />;
-      case "android":
-        return <IoLogoAndroid title={eachTech} className={className} />;
-      case "ios":
-        return <FaApple title={eachTech} className={className} />;
-      case "contentful":
-        return <SiContentful title={eachTech} className={className} />;
-      case "javascript":
-        return <FaJsSquare title={eachTech} className={className} />;
-      case "github":
-        return <FaGithub title={eachTech} className={className} />;
-      case "swift":
-        return <FaSwift title={eachTech} className={className} />;
-      case "python":
-        return <FaPython title={eachTech} className={className} />;
-      case "aws":
-        return <FaAws title={eachTech} className={className} />;
-      case "gitlab":
-        return <FaGitlab title={eachTech} className={className} />;
-      case "REST":
-        return <TbApi title={eachTech} className={className} />;
-      case "typescript":
-        return <SiTypescript title={eachTech} className={className} />;
-      case "nextjs":
-        return <RiNextjsFill title={eachTech} className={className} />;
-      case "sap":
-        return <SiSap title={eachTech} className={className} />;
-      case "docker":
-        return <FaDocker title={eachTech} className={className} />;
-      case "tailwind":
-        return <SiTailwindcss title={eachTech} className={className} />;
-      case "figma":
-        return <FaFigma title={eachTech} className={className} />;
-      case "jira":
-        return <SiJira title={eachTech} className={className} />;
-      case "node":
-        return <FaNode title={eachTech} className={classNameNode} />;
-    }
-  };
   return (
-    <div className="w-full h-full flex justify-center z-10">
+    <motion.div
+      className="w-full h-full flex justify-center z-10"
+      initial="hidden"
+      whileInView="visible"
+      variants={{
+        hidden: { opacity: 0, y: 20 },
+        visible: { opacity: 1, y: 0, transition: { duration: 3 } },
+      }}
+    >
       <DateStringBlocks data={props.data} />
       <div
         key={props.key}
@@ -126,7 +69,7 @@ const ExperienceBlock = (props: any) => {
           <div className="w-1/2 h-[2px] justify-left bg-white mt-1"></div>
           <div className="w-full h-1/3 grid grid-cols-3 gap-2 justify-center items-center mt-2 p-4">
             {props.data.tech.map((eachTech: string) =>
-              returnTechIcon(eachTech)
+              getLogo({ logoName: eachTech })
             )}
           </div>
         </div>
@@ -138,7 +81,7 @@ const ExperienceBlock = (props: any) => {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
