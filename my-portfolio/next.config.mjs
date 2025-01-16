@@ -3,8 +3,7 @@ const nextConfig = {
   images: {
     unoptimized: false,
   },
-  basePath: undefined,
-  output: undefined,
+  basePath: "/myPortfolio",
 };
 
 export default nextConfig;
