@@ -55,7 +55,7 @@ const MajorToolsContainer = () => {
               logoName: eachTech.tool,
               logoStyle: "mx-auto text-9xl text-black",
             })}
-            <p className="text-center text-white text-xs mt-2">
+            <p className="text-center text-black text-md mt-2">
               {eachTech.tool}
             </p>
           </motion.div>
@@ -102,7 +102,7 @@ const SupportToolsContainer = () => {
             logoName: eachTech,
             logoStyle: "mx-auto text-black text-8xl",
           })}
-          <p className="text-center text-md mt-5">{eachTech}</p>
+          <p className="text-center text-black text-m mt-5">{eachTech}</p>
         </motion.div>
       ))}
     </div>

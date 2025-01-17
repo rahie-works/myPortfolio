@@ -9,7 +9,7 @@ const raleway = Raleway({ subsets: ["latin"] });
 const HomePageSummaryHeading = () => {
   return (
     <>
-      <div className="w-full h-screen text-5xl text-white font-bold flex flex-col ml-20">
+      <div className="w-full h-full text-5xl text-white font-bold flex flex-col ml-20">
         <span
           className={`h-1/2 ${raleway.className} animate-fade-up animate-ease-in`}
         >
@@ -42,7 +42,7 @@ const HomePageSummaryHeading = () => {
 
 const HomePageSummaryLinkContainer = () => {
   return (
-    <div className="w-full h-screen flex ml-20 animate-fade-up animate-ease-in items-center">
+    <div className="w-full h-full flex ml-20 animate-fade-up animate-ease-in items-center">
       <button className="bg-blue-700 text-white text-md p-3 mr-10 rounded-lg cursor-pointer">
         Lets Connect
       </button>
@@ -60,23 +60,25 @@ const HomePageCompanyPortfolio = () => {
       <p className="text-gray-500 text-md mt-5 mb-2">
         Trusted by businesses from every corner of the globe, near and far.
       </p>
-      <div className="w-full flex h-full gap-20 pb-5 animate-marquee whitespace-nowrap">
+      <div className="w-full flex h-64 gap-20 animate-marquee whitespace-nowrap">
         {CompanyList.map((eachCompany, index) => (
           <Image
             alt={eachCompany}
             key={index}
-            className="text-white text-2xl filter grayscale"
+            className="w-full h-1/2 filter grayscale"
             src={eachCompany}
-            style={{ width: "60%", height: "60%" }}
+            width={100}
+            height={100}
           />
         ))}
         {CompanyList.map((eachCompany, index) => (
           <Image
             alt={eachCompany}
             key={index}
-            className="text-white text-2xl filter grayscale"
+            className="w-full h-1/2 filter grayscale"
             src={eachCompany}
-            style={{ width: "60%", height: "60%" }}
+            width={100}
+            height={100}
           />
         ))}
       </div>

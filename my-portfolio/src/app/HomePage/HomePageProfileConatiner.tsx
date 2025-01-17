@@ -12,7 +12,8 @@ const HomePageProfileInfoContainer = () => {
         src="/me.png"
         className="rounded-xl"
         alt="profile_photo"
-        style={{ width: "60%" }}
+        width={200}
+        height={200}
       />
       <p className="text-white text-2xl mt-5">Raheesh Muhamed</p>
       <div className="w-full h-1/2 flex flex-col items-center justify-around">
@@ -36,7 +37,7 @@ const HomePageProfileInfoContainer = () => {
 
 export const HomePageProfileContainer = () => {
   return (
-    <div className="relative w-2/3 h-2/3 mt-10 animate-fade-up animate-ease-in flex justify-center items-center">
+    <div className="relative w-2/3 h-2/3 mt-5 animate-fade-up animate-ease-in flex justify-center items-center">
       <HomePageProfileInfoContainer />
       <HomePageProfileSummaryContainer />
     </div>

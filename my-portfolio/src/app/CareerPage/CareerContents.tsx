@@ -36,6 +36,7 @@ const ExperienceBlock = (props: any) => {
       className="w-full h-full flex justify-center z-10"
       initial="hidden"
       whileInView="visible"
+      key={props.key}
       variants={{
         hidden: { opacity: 0, y: 20 },
         visible: { opacity: 1, y: 0, transition: { duration: 3 } },
@@ -129,8 +130,8 @@ export default function CareerContents() {
     <section className="relative h-screen w-full items-center flex flex-col bg-black">
       <ExperienceLargeData />
       <div className="h-full w-full overflow-y-scroll space-y-20 flex flex-col items-center mb-20">
-        {ExperienceData.map((each, key) => (
-          <ExperienceBlock data={each} key={key} />
+        {ExperienceData.map((each, index) => (
+          <ExperienceBlock data={each} key={index} />
         ))}
       </div>
     </section>
