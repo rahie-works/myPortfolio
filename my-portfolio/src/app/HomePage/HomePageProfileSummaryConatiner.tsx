@@ -9,7 +9,7 @@ const raleway = Raleway({ subsets: ["latin"] });
 const HomePageSummaryHeading = () => {
   return (
     <>
-      <div className="w-full h-full text-5xl text-white font-bold flex flex-col ml-20">
+      <div className="w-full h-full text-3xl md:text-5xl text-white font-bold flex flex-col mt-20 md:mt-0 px-5 md:px-0 md:ml-20 items-center">
         <span
           className={`h-1/2 ${raleway.className} animate-fade-up animate-ease-in`}
         >
@@ -20,7 +20,7 @@ const HomePageSummaryHeading = () => {
         </span>
       </div>
       <div
-        className={`${raleway.className} animate-fade-up flex flex-col animate-ease-in w-full text-lg text-white flex justify-center ml-20`}
+        className={`${raleway.className} p-5 md:p-0 animate-fade-up flex flex-col animate-ease-in w-full text-lg text-white flex justify-center md:ml-20`}
       >
         <p className="pb-5">
           Passionate about developing robust, scalable, and user-focused
@@ -42,7 +42,7 @@ const HomePageSummaryHeading = () => {
 
 const HomePageSummaryLinkContainer = () => {
   return (
-    <div className="w-full h-full flex ml-20 animate-fade-up animate-ease-in items-center">
+    <div className="w-full h-full flex md:ml-20 animate-fade-up animate-ease-in justify-center md:justify-start items-center">
       <button className="bg-blue-700 text-white text-md p-3 mr-10 rounded-lg cursor-pointer">
         Lets Connect
       </button>
@@ -56,11 +56,11 @@ const HomePageSummaryLinkContainer = () => {
 
 const HomePageCompanyPortfolio = () => {
   return (
-    <div className="w-full h-full flex flex-col items-left animate-fade-up animate-ease-in ml-20 overflow-hidden">
+    <div className="w-full h-full flex flex-col md:items-left animate-fade-up animate-ease-in ml-5 md:ml-20 overflow-hidden">
       <p className="text-white text-md mt-5 mb-2">
         Trusted by businesses from every corner of the globe, near and far.
       </p>
-      <div className="w-full flex h-64 gap-20 animate-marquee whitespace-nowrap">
+      <div className="w-full flex h-20 md:h-64 gap-20 animate-marquee whitespace-nowrap">
         {CompanyList.map((eachCompany, index) => (
           <Image
             alt={eachCompany}
@@ -88,9 +88,8 @@ const HomePageCompanyPortfolio = () => {
 
 export const HomePageProfileSummaryContainer = () => {
   return (
-    <div className="w-2/3 h-full flex flex-col">
+    <div className="w-full h-1/2 md:w-2/3 md:h-full flex flex-col bg-gradient-to-b from-gray-900 to-transparent md:bg-none">
       <HomePageSummaryHeading />
-      {/* <TestimonialCards /> */}
       <HomePageSummaryLinkContainer />
       <HomePageCompanyPortfolio />
     </div>

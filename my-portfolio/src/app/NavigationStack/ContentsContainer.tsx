@@ -35,7 +35,7 @@ export default function ContentsContainer() {
   };
 
   return (
-    <div className="absolute w-full h-full">
+    <div className="absolute w-screen h-full">
       <div className="flex w-full absolute z-50 top-10 left-1/2 transform -translate-x-1/2 justify-center items-center animate-fade animate-ease-in">
         <NavigationTabs tab={selectedTab} />
       </div>

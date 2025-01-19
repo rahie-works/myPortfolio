@@ -64,7 +64,7 @@ export default function NavigationTabs(props: any) {
   return (
     <div
       ref={pageRef}
-      className={`absolute flex flex-row justify-around w-1/2 sm:w-1/3 h-1/6 text-white text-2xl sm:text-2xl ${raleway.className}`}
+      className={`absolute flex flex-row justify-around w-full h-1/3 md:w-1/3 md:h-1/6  text-white text-2xl sm:text-2xl ${raleway.className}`}
     >
       {TABS.map((eachTab, index) => {
         return (
