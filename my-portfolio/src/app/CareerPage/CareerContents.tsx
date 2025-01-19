@@ -36,17 +36,14 @@ const ExperienceBlock = (props: any) => {
       className="w-full h-full flex justify-center z-10"
       initial="hidden"
       whileInView="visible"
-      key={props.key}
+      key={props?.index}
       variants={{
         hidden: { opacity: 0, y: 20 },
         visible: { opacity: 1, y: 0, transition: { duration: 3 } },
       }}
     >
       <DateStringBlocks data={props.data} />
-      <div
-        key={props.key}
-        className="w-2/3 h-full p-10 rounded-4xl flex flex-row animate-fade-up animate-ease-in"
-      >
+      <div className="w-2/3 h-full p-10 rounded-4xl flex flex-row animate-fade-up animate-ease-in">
         <div className={`w-1/3`}>
           <div
             className={`w-full pb-5 ${raleway.className} text-3xl text-white `}
@@ -69,8 +66,9 @@ const ExperienceBlock = (props: any) => {
           <p className="text-white mt-8 text-sm">TECH USED</p>
           <div className="w-1/2 h-[2px] justify-left bg-white mt-1"></div>
           <div className="w-full h-1/3 grid grid-cols-3 gap-2 justify-center items-center mt-2 p-4">
-            {props.data.tech.map((eachTech: string) =>
-              getLogo({ logoName: eachTech })
+            {props.data.tech.map(
+              ({ eachTech, index }: { eachTech: string; index: number }) =>
+                getLogo({ logoName: eachTech, key: index })
             )}
           </div>
         </div>
@@ -131,7 +129,7 @@ export default function CareerContents() {
       <ExperienceLargeData />
       <div className="h-full w-full overflow-y-scroll space-y-20 flex flex-col items-center mb-20">
         {ExperienceData.map((each, index) => (
-          <ExperienceBlock data={each} key={index} />
+          <ExperienceBlock data={each} key={index} index={index} />
         ))}
       </div>
     </section>

@@ -1,14 +1,14 @@
 export const MajorTools = {
   tech: [
-    { tool: "React", abbr: "Rn" },
-    { tool: "TypeScript", abbr: "Ts" },
-    { tool: "Javascript", abbr: "Js" },
-    { tool: "Node", abbr: "node" },
-    { tool: "NextJs", abbr: "next" },
-    { tool: "Tailwind", abbr: "tw" },
-    { tool: "CSS3", abbr: "css" },
-    { tool: "HTML5", abbr: "html" },
-    { tool: "AWS", abbr: "aws" },
+    "React",
+    "TypeScript",
+    "Javascript",
+    "Node",
+    "NextJs",
+    "Tailwind",
+    "CSS3",
+    "HTML5",
+    "AWS",
   ],
   expertise: [
     {
@@ -48,10 +48,11 @@ export const MinorTools = {
   ],
 };
 
-export const WhatsBrewing = {
+export const WhatsBrewingItemsConstants = {
   certifications: [
-    "AWS Cloud Practitioner",
-    "AWS Developer Associate",
-    "AWS Solutions Architect",
+    "/logos/AWS_cert_practitioner.png",
+    "/logos/AWS_solutions_arch.png",
+    "/logos/AWS_solutions_pro.png",
+    "/logos/AWS_cert_dev.png",
   ],
 };

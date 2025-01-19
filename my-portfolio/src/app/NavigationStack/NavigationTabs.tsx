@@ -8,7 +8,7 @@ import { AiOutlineCode, AiFillCode } from "react-icons/ai";
 import { MdMailOutline, MdMail } from "react-icons/md";
 
 const raleway = Raleway({ subsets: ["latin"] });
-const TABS = ["Home", "Career", "Projects", "Tools", "Blog", "Connect"];
+const TABS = ["Home", "Career", "Projects", "Tools", "Connect"];
 
 export default function NavigationTabs(props: any) {
   const [activeTab, setActiveTab] = useState("Home");

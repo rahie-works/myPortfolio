@@ -8,10 +8,10 @@ const raleway = Raleway({ subsets: ["latin"] });
 const ProjectHeadingContainer = () => {
   return (
     <div
-      className={`w-full h-1/2 text-8xl mt-32 text-white flex flex-col font-bold ${raleway.className} animate-fade-up animate-ease-in items-center`}
+      className={`w-full h-1/2 text-8xl mt-32 text-white flex font-bold ${raleway.className} animate-fade-up animate-ease-in justify-center`}
     >
-      <span>Recent Projects &</span>
-      <span className="text-blue-500">WIP</span>
+      <span>{"</My Recent"}</span>
+      <span className="text-blue-500">{"Projects/>"}</span>
     </div>
   );
 };
