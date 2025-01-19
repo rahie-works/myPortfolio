@@ -39,7 +39,7 @@ const ExperienceBlock = (props: any) => {
       key={props?.index}
       variants={{
         hidden: { opacity: 0, y: 20 },
-        visible: { opacity: 1, y: 0, transition: { duration: 3 } },
+        visible: { opacity: 1, y: 0, transition: { duration: 2 } },
       }}
     >
       <DateStringBlocks data={props.data} />
@@ -66,9 +66,8 @@ const ExperienceBlock = (props: any) => {
           <p className="text-white mt-8 text-sm">TECH USED</p>
           <div className="w-1/2 h-[2px] justify-left bg-white mt-1"></div>
           <div className="w-full h-1/3 grid grid-cols-3 gap-2 justify-center items-center mt-2 p-4">
-            {props.data.tech.map(
-              ({ eachTech, index }: { eachTech: string; index: number }) =>
-                getLogo({ logoName: eachTech, key: index })
+            {props?.data?.tech.map((eachTech: string, index: number) =>
+              getLogo({ logoName: eachTech, key: index })
             )}
           </div>
         </div>

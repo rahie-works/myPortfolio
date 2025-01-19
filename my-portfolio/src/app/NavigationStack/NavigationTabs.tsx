@@ -8,7 +8,7 @@ import { AiOutlineCode, AiFillCode } from "react-icons/ai";
 import { MdMailOutline, MdMail } from "react-icons/md";
 
 const raleway = Raleway({ subsets: ["latin"] });
-const TABS = ["Home", "Career", "Projects", "Tools", "Connect"];
+const TABS = ["Home", "Career", "Works", "Tools", "Connect"];
 
 export default function NavigationTabs(props: any) {
   const [activeTab, setActiveTab] = useState("Home");
@@ -34,8 +34,8 @@ export default function NavigationTabs(props: any) {
         ) : (
           <TbBriefcase2 />
         );
-      case "Projects":
-        return activeTab === "Projects" ? (
+      case "Works":
+        return activeTab === "Works" ? (
           <FaRegFolderOpen className="text-blue-500" />
         ) : (
           <FaRegFolder />

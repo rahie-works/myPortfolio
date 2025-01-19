@@ -13,7 +13,7 @@ const HomePageSummaryHeading = () => {
         <span
           className={`h-1/2 ${raleway.className} animate-fade-up animate-ease-in`}
         >
-          {`</ Building Solutions`},
+          {`< Building Solutions`},
         </span>
         <span className="h-full animate-fade-up animate-ease-in bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 bg-clip-text text-transparent">
           {`Crafting the Future />`}
@@ -57,7 +57,7 @@ const HomePageSummaryLinkContainer = () => {
 const HomePageCompanyPortfolio = () => {
   return (
     <div className="w-full h-full flex flex-col items-left animate-fade-up animate-ease-in ml-20 overflow-hidden">
-      <p className="text-gray-500 text-md mt-5 mb-2">
+      <p className="text-white text-md mt-5 mb-2">
         Trusted by businesses from every corner of the globe, near and far.
       </p>
       <div className="w-full flex h-64 gap-20 animate-marquee whitespace-nowrap">

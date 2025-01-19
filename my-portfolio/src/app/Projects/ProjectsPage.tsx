@@ -8,17 +8,17 @@ const raleway = Raleway({ subsets: ["latin"] });
 const ProjectHeadingContainer = () => {
   return (
     <div
-      className={`w-full h-1/2 text-8xl mt-32 text-white flex font-bold ${raleway.className} animate-fade-up animate-ease-in justify-center`}
+      className={`w-full h-1/2 text-8xl mt-16 text-white flex font-bold ${raleway.className} animate-fade-up animate-ease-in justify-center items-center`}
     >
-      <span>{"</My Recent"}</span>
-      <span className="text-blue-500">{"Projects/>"}</span>
+      <span>{"< My"}</span>
+      <span className="text-blue-500 ml-5">{"Works />"}</span>
     </div>
   );
 };
 
 const ProjectsInfoContainer = () => {
   return (
-    <div className="w-full h-full items-center flex flex-col justify-center mb-10 animate-fade-up animate-ease-in">
+    <div className="w-full h-full items-center flex flex-col justify-center mb-30 animate-fade-up animate-ease-in">
       <div className="w-3/4 h-full flex justify-evenly">
         {MainProjects.map((eachproject, index) => (
           <div
@@ -33,7 +33,7 @@ const ProjectsInfoContainer = () => {
               muted
               className="w-full object-cover rounded-xl animate-fade-up animate-ease-in"
             />
-            {eachproject.name}
+            <h2 className="text-2xl py-5">{eachproject.name}</h2>
             <p className="text-sm text-justify mt-4 animate-fade-up animate-ease-in">
               {eachproject.desc}
             </p>

@@ -3,7 +3,8 @@ import Image from "next/image";
 import { Raleway } from "next/font/google";
 const raleway = Raleway({ subsets: ["latin"] });
 import { motion } from "framer-motion";
-import { GiMuscleFat, GiMuscleUp } from "react-icons/gi";
+import { ImPower } from "react-icons/im";
+import { MdHandyman } from "react-icons/md";
 
 import {
   MajorTools,
@@ -30,13 +31,13 @@ const item = {
 const ToolsHeadingContainer = () => {
   return (
     <div
-      className={`w-full h-full text-8xl p-32 text-white flex font-bold ${raleway.className} animate-fade-up animate-ease-in items-center justify-center`}
+      className={`w-full h-full text-8xl px-32 pt-40 pb-16 text-white flex font-bold ${raleway.className} animate-fade-up animate-ease-in items-center justify-center`}
     >
       <span className={`${raleway.className} animate-fade-up animate-ease-in`}>
-        {"</My Tech"}
+        {"< My Tech"}
       </span>
       <span className="text-blue-500 animate-fade-up animate-ease-in">
-        {"Stack/>"}
+        {"Stack />"}
       </span>
     </div>
   );
@@ -45,11 +46,11 @@ const ToolsHeadingContainer = () => {
 const MajorToolsContainer = () => {
   return (
     <div className="w-full h-3/4">
-      <div className="h-1/2 flex justify-center ">
+      <div className="h-1/2 flex justify-center">
         <motion.div
-          className={`glass-effect flex w-3/4 h-full 
+          className={`flex w-3/4 h-full 
           grid grid-cols-5 gap-4 justify-center py-4 
-          bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500`}
+          bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-xl p-3`}
           initial="hidden"
           animate="show"
           variants={container}
@@ -98,7 +99,7 @@ const SupportToolsContainer = () => {
   return (
     <div
       ref={scrollRef}
-      className="glass-effect w-full p-3 h-1/5 grid grid-cols-6 gap-3 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500"
+      className="w-full p-3 h-1/5 grid grid-cols-6 gap-3 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-xl"
     >
       {MinorTools.tech.map((eachTech, index) => (
         <motion.div
@@ -129,7 +130,7 @@ const WhatsBrewingItems = () => {
   const scrollRef = useRef(null);
   return (
     <motion.div
-      className="glass-effect flex justify-evenly w-full h-auto p-2"
+      className="flex justify-evenly w-full h-auto p-2"
       initial="hidden"
       animate="show"
       variants={container}
@@ -143,11 +144,31 @@ const WhatsBrewingItems = () => {
           key={index}
           variants={item}
           viewport={{ once: true, amount: 0.5 }}
-          className={`rounded shadow-lg text-white py-4 ${
-            index !== 0 && `filter grayscale`
-          }`}
+          className="rounded shadow-lg text-white py-4"
         >
-          <Image alt={eachCert} src={eachCert} width={200} height={100} />
+          <motion.div
+            animate={
+              eachCert.status === "brewing"
+                ? {
+                    opacity: [0.2, 0.5, 1, 0.5, 0.2],
+                  }
+                : ""
+            }
+            transition={{
+              duration: 2, // Duration of one pulse
+              repeat: Infinity, // Infinite pulses
+              repeatType: "loop", // Loop the animation
+              ease: "easeInOut", // Smooth animation
+            }}
+            className={`${eachCert.status === "upcoming" && `opacity-25`}`}
+          >
+            <Image
+              alt={eachCert.name}
+              src={eachCert.logo}
+              width={200}
+              height={100}
+            />
+          </motion.div>
         </motion.div>
       ))}
     </motion.div>
@@ -157,12 +178,12 @@ const WhatsBrewingItems = () => {
 const WhatsBrewing = () => {
   return (
     <div
-      className={`w-full h-1/2 text-white flex flex-col text-8xl font-bold justify-center items-center ${raleway.className}`}
+      className={`w-full h-full text-white flex flex-col text-8xl font-bold justify-center items-center ${raleway.className}`}
     >
       <div className="py-10">
-        <span className=" animate-fade-up animate-ease-in">{"</What's"}</span>
+        <span className=" animate-fade-up animate-ease-in">{"< What's"}</span>
         <span className="text-blue-500 animate-fade-up animate-ease-in">
-          {"Brewing/>"}
+          {"Brewing />"}
         </span>
       </div>
       <WhatsBrewingItems />
@@ -178,11 +199,11 @@ const ToolsInfoContainer = () => {
           style={{ animationDelay: "0.5s" }}
           className="flex-1 h-1 bg-white rounded"
         ></div>
-        <GiMuscleUp className="text-white text-3xl ml-5 animate-fade-up animate-ease-in" />
+        <ImPower className="text-white text-3xl ml-5 animate-fade-up animate-ease-in" />
         <p className="mx-4 text-white text-lg whitespace-nowrap animate-fade-up animate-ease-in">
           My Power Tools Stack
         </p>
-        <GiMuscleUp className="text-white text-3xl mr-5 animate-fade-up animate-ease-in" />
+        <ImPower className="text-white text-3xl mr-5 animate-fade-up animate-ease-in" />
         <div
           style={{ animationDelay: "0.5s" }}
           className="flex-1 h-1 bg-white rounded"
@@ -191,11 +212,11 @@ const ToolsInfoContainer = () => {
       <MajorToolsContainer />
       <div className="w-full flex justify-center items-center mb-5">
         <div className="flex-1 h-1 bg-white rounded"></div>
-        <GiMuscleFat className="text-white text-3xl ml-5 animate-fade-up animate-ease-in" />
+        <MdHandyman className="text-white text-3xl ml-5 animate-fade-up animate-ease-in" />
         <p className="mx-4 text-white text-lg whitespace-nowrap animate-fade-up animate-ease-in">
           My other support stack
         </p>
-        <GiMuscleFat className="text-white text-3xl mr-5 animate-fade-up animate-ease-in" />
+        <MdHandyman className="text-white text-3xl mr-5 animate-fade-up animate-ease-in" />
         <div className="flex-1 h-1 bg-white rounded"></div>
       </div>
       <SupportToolsContainer />

@@ -16,7 +16,7 @@ export default function ContentsContainer() {
       case "Career":
         setContentPage(<CareerContents />);
         return;
-      case "Projects":
+      case "Works":
         setContentPage(<ProjectsPages />);
         return;
       case "Tools":

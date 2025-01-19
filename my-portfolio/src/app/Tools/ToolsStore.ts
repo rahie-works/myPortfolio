@@ -50,9 +50,25 @@ export const MinorTools = {
 
 export const WhatsBrewingItemsConstants = {
   certifications: [
-    "/logos/AWS_cert_practitioner.png",
-    "/logos/AWS_solutions_arch.png",
-    "/logos/AWS_solutions_pro.png",
-    "/logos/AWS_cert_dev.png",
+    {
+      logo: "/logos/AWS_cert_practitioner.png",
+      status: "brewing",
+      name: "AWS Cloud Practitioner",
+    },
+    {
+      logo: "/logos/AWS_solutions_arch.png",
+      status: "upcoming",
+      name: "AWS Solutions Architect Ast",
+    },
+    {
+      logo: "/logos/AWS_solutions_pro.png",
+      status: "upcoming",
+      name: "AWS Solutions Aechitect Pro",
+    },
+    {
+      logo: "/logos/AWS_cert_dev.png",
+      status: "upcoming",
+      name: "AWS Cloud Developer",
+    },
   ],
 };
