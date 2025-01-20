@@ -1,7 +1,6 @@
 import { Raleway } from "next/font/google";
 import { CompanyList } from "./HomePageConstants";
 import { FaArrowRight } from "react-icons/fa6";
-import { TestimonialCards } from "./TestimonialCards";
 import Image from "next/image";
 
 const raleway = Raleway({ subsets: ["latin"] });
