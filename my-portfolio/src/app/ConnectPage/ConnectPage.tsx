@@ -11,7 +11,7 @@ import { SiMinutemailer } from "react-icons/si";
 const AboutHeadingContainer = () => {
   return (
     <div
-      className={`relative w-full h-1/3 mb-10 text-8xl text-white flex font-bold ${raleway.className} animate-fade-up animate-ease-in justify-center items-end`}
+      className={`w-full h-full mt-32 md:mt-0 md:mb-10 text-4xl md:text-8xl text-white flex font-bold ${raleway.className} animate-fade-up animate-ease-in justify-center items-center md:items-end`}
     >
       <span className={`${raleway.className} animate-fade-up animate-ease-in`}>
         {"< Let's"}
@@ -35,7 +35,7 @@ const ContactForm = () => {
           type="text"
           id="name"
           name="name"
-          className="mt-1 block w-full p-5 rounded-md bg-gray-500"
+          className="mt-1 block w-full p-3 md:p-5 rounded-md bg-gray-500"
           placeholder="Your Name"
         />
       </div>
@@ -49,7 +49,7 @@ const ContactForm = () => {
           type="email"
           id="email"
           name="email"
-          className="mt-1 block w-full p-5 bg-gray-500 rounded-md"
+          className="mt-1 block w-full p-3 md:p-5 bg-gray-500 rounded-md"
           placeholder="Your Email"
         />
       </div>
@@ -63,7 +63,7 @@ const ContactForm = () => {
           id="message"
           name="message"
           rows={10}
-          className="mt-1 block w-full p-5 rounded-md bg-gray-500 focus:border-blue-500 resize-none"
+          className="mt-1 block h-3/4 md:h-full w-full p-3 md:p-5 rounded-md bg-gray-500 focus:border-blue-500 resize-none"
           placeholder="Your Message"
         ></textarea>
       </div>
@@ -71,7 +71,7 @@ const ContactForm = () => {
       {/* Submit Button */}
       <button
         type="submit"
-        className="w-full flex justify-center bg-gray-500 text-white font-medium py-2 px-4 rounded-md hover:bg-blue-600 transition duration-300"
+        className="w-full flex justify-center md:bg-gray-500 bg-blue-500 text-white font-medium py-2 px-4 rounded-md hover:bg-blue-600 transition duration-300"
       >
         {"Send Message"} <SiMinutemailer className="text-2xl ml-5" />
       </button>
@@ -95,9 +95,9 @@ const SocialConnections = () => {
 
 const ConnectContainer = () => {
   return (
-    <div className="w-1/2 h-full mb-5 flex flex-col justify-center items-center">
+    <div className="w-full md:w-1/2 h-full mb-5 flex flex-col justify-center items-center">
       <SocialConnections />
-      <div className="w-2/3 h-full flex justify-evenly items-center mt-10 animate-fade-up animate-ease-in">
+      <div className="w-3/4 md:w-2/3 h-full flex justify-evenly items-center mt-10 animate-fade-up animate-ease-in">
         <div className="w-1/2 h-1 bg-white rounded-lg"></div>
         <p className="text-white font-bold px-3">OR</p>
         <div className="w-1/2 h-1 bg-white rounded-lg"></div>
@@ -110,7 +110,7 @@ const ConnectContainer = () => {
 export default function ConnectPage() {
   return (
     <section
-      className={`relative h-full w-full items-center flex flex-col bg-black ${raleway.className} overflow-y-scroll`}
+      className={`h-full w-full items-center flex flex-col bg-black ${raleway.className}`}
     >
       <AboutHeadingContainer />
       <ConnectContainer />

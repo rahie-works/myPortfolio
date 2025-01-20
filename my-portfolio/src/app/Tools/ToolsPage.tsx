@@ -31,7 +31,7 @@ const item = {
 const ToolsHeadingContainer = () => {
   return (
     <div
-      className={`w-full h-full text-8xl px-32 pt-40 pb-16 text-white flex font-bold ${raleway.className} animate-fade-up animate-ease-in items-center justify-center`}
+      className={`w-full h-full text-4xl md:text-8xl md:px-32 pt-40 pb-16 text-white flex font-bold ${raleway.className} animate-fade-up animate-ease-in items-center justify-center`}
     >
       <span className={`${raleway.className} animate-fade-up animate-ease-in`}>
         {"< My Tech"}
@@ -48,8 +48,8 @@ const MajorToolsContainer = () => {
     <div className="w-full h-3/4">
       <div className="h-1/2 flex justify-center">
         <motion.div
-          className={`flex w-3/4 h-full 
-          grid grid-cols-5 gap-4 justify-center py-4 
+          className={`w-full md:w-3/4 h-full 
+          grid grid-cols-5 gap-4 justify-center md:py-4 
           bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-xl p-3`}
           initial="hidden"
           animate="show"
@@ -63,10 +63,10 @@ const MajorToolsContainer = () => {
             >
               {getLogo({
                 logoName: eachTech,
-                logoStyle: "mx-auto text-6xl text-white",
+                logoStyle: "md:mx-auto text-4xl md:text-6xl text-white",
                 key: index,
               })}
-              <p className="text-center text-white text-md font-bold">
+              <p className="text-center text-white text-xs md:text-md md:font-bold">
                 {eachTech}
               </p>
             </motion.div>
@@ -74,19 +74,21 @@ const MajorToolsContainer = () => {
         </motion.div>
       </div>
       <div
-        className={`w-full h-1/4 ${raleway.className} flex justify-evenly items-center animate-fade-up animate-ease-in`}
+        className={`w-full h-1/3 md:h-1/4 ${raleway.className} grid grid-cols-2 gap-4 md:flex justify-center items-center animate-fade-up animate-ease-in`}
       >
         {MajorTools.expertise.map((eachExp, index) => (
           <div
             key={index}
-            className={`w-auto h-1/2 text-7xl text-white flex flex-col justify-center items-center`}
+            className={`w-auto h-1/2 text-white flex md:flex-col justify-center items-center`}
           >
             <div
-              className={`text-8xl font-bold bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent`}
+              className={`text-5xl md:text-8xl font-bold bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent`}
             >
               {eachExp.value}
             </div>
-            <div className={`text-lg font-bold`}>{eachExp.desc}</div>
+            <div className={`text-sm md:text-lg md:font-bold ml-2 md:ml-0`}>
+              {eachExp.desc}
+            </div>
           </div>
         ))}
       </div>
@@ -99,7 +101,7 @@ const SupportToolsContainer = () => {
   return (
     <div
       ref={scrollRef}
-      className="w-full p-3 h-1/5 grid grid-cols-6 gap-3 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-xl"
+      className="w-full p-3 h-1/3 md:h-1/5 grid md:grid-cols-6 grid-cols-3 gap-3 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-xl"
     >
       {MinorTools.tech.map((eachTech, index) => (
         <motion.div
@@ -116,7 +118,7 @@ const SupportToolsContainer = () => {
         >
           {getLogo({
             logoName: eachTech,
-            logoStyle: "mx-auto text-white text-8xl",
+            logoStyle: "mx-auto text-white text-4xl md:text-8xl",
             key: index,
           })}
           <p className="text-white text-black text-md">{eachTech}</p>
@@ -130,7 +132,7 @@ const WhatsBrewingItems = () => {
   const scrollRef = useRef(null);
   return (
     <motion.div
-      className="flex justify-evenly w-full h-auto p-2"
+      className="grid grid-cols-2 gap-5 md:flex justify-evenly w-full h-1/2 md:h-auto p-2"
       initial="hidden"
       animate="show"
       variants={container}
@@ -178,7 +180,7 @@ const WhatsBrewingItems = () => {
 const WhatsBrewing = () => {
   return (
     <div
-      className={`w-full h-full text-white flex flex-col text-8xl font-bold justify-center items-center ${raleway.className}`}
+      className={`w-full h-2/3 md:h-full text-white flex flex-col text-3xl md:text-8xl font-bold justify-center items-center ${raleway.className}`}
     >
       <div className="py-10">
         <span className=" animate-fade-up animate-ease-in">{"< What's"}</span>
@@ -199,11 +201,11 @@ const ToolsInfoContainer = () => {
           style={{ animationDelay: "0.5s" }}
           className="flex-1 h-1 bg-white rounded"
         ></div>
-        <ImPower className="text-white text-3xl ml-5 animate-fade-up animate-ease-in" />
-        <p className="mx-4 text-white text-lg whitespace-nowrap animate-fade-up animate-ease-in">
+        <ImPower className="text-white text-xl md:text-3xl md:ml-5 animate-fade-up animate-ease-in" />
+        <p className="mx-2 md:mx-4 text-white text-lg whitespace-nowrap animate-fade-up animate-ease-in">
           My Power Tools Stack
         </p>
-        <ImPower className="text-white text-3xl mr-5 animate-fade-up animate-ease-in" />
+        <ImPower className="text-white text-xl md:text-3xl md:mr-5 animate-fade-up animate-ease-in" />
         <div
           style={{ animationDelay: "0.5s" }}
           className="flex-1 h-1 bg-white rounded"
@@ -212,11 +214,11 @@ const ToolsInfoContainer = () => {
       <MajorToolsContainer />
       <div className="w-full flex justify-center items-center mb-5">
         <div className="flex-1 h-1 bg-white rounded"></div>
-        <MdHandyman className="text-white text-3xl ml-5 animate-fade-up animate-ease-in" />
-        <p className="mx-4 text-white text-lg whitespace-nowrap animate-fade-up animate-ease-in">
+        <MdHandyman className="text-white text-xl md:text-3xl md:ml-5 animate-fade-up animate-ease-in" />
+        <p className="mx-2 md:mx-4 text-white text-lg whitespace-nowrap animate-fade-up animate-ease-in">
           My other support stack
         </p>
-        <MdHandyman className="text-white text-3xl mr-5 animate-fade-up animate-ease-in" />
+        <MdHandyman className="text-white text-xl md:text-3xl md:mr-5 animate-fade-up animate-ease-in" />
         <div className="flex-1 h-1 bg-white rounded"></div>
       </div>
       <SupportToolsContainer />

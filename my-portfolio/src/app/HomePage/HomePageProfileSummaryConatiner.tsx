@@ -88,7 +88,7 @@ const HomePageCompanyPortfolio = () => {
 
 export const HomePageProfileSummaryContainer = () => {
   return (
-    <div className="w-full h-1/2 md:w-2/3 md:h-full flex flex-col bg-gradient-to-b from-gray-900 to-transparent md:bg-none">
+    <div className="w-full h-1/2 md:w-2/3 md:h-full flex flex-col bg-gradient-to-b from-gray-900 to-transparent md:bg-none rounded-lg">
       <HomePageSummaryHeading />
       <HomePageSummaryLinkContainer />
       <HomePageCompanyPortfolio />

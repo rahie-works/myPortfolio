@@ -13,7 +13,7 @@ export const MajorTools = {
   expertise: [
     {
       value: "+4",
-      desc: "Hands on experience since 2020",
+      desc: "Hands on experience",
     },
     {
       value: "+12",
@@ -21,7 +21,7 @@ export const MajorTools = {
     },
     {
       value: "+4",
-      desc: "Top-notch Enterprise Contributions",
+      desc: "Enterprise Contributions",
     },
     {
       value: "+5",
