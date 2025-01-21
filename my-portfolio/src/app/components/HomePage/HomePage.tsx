@@ -6,7 +6,7 @@ const raleway = Raleway({ subsets: ["latin"] });
 export default function HomePage() {
   return (
     <section
-      className={`relative h-auto md:h-full w-full items-center flex bg-black ${raleway.className} justify-center`}
+      className={`relative h-auto md:h-screen w-full items-center flex bg-black ${raleway.className} justify-center`}
     >
       <HomePageProfileContainer />
     </section>

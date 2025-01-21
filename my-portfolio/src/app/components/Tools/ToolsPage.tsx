@@ -1,17 +1,22 @@
+"use client";
 import { useRef } from "react";
 import Image from "next/image";
 import { Raleway } from "next/font/google";
-const raleway = Raleway({ subsets: ["latin"] });
 import { motion } from "framer-motion";
+
+// icons
 import { ImPower } from "react-icons/im";
 import { MdHandyman } from "react-icons/md";
 
+// constants
 import {
   MajorTools,
   MinorTools,
   WhatsBrewingItemsConstants,
-} from "./ToolsStore";
-import { getLogo } from "../utils/GetLogoUtil";
+} from "../../constants/toolsStore";
+
+// utils
+import { getLogo } from "../../utils/GetLogoUtil";
 
 const container = {
   hidden: { opacity: 0 },
@@ -22,6 +27,8 @@ const container = {
     },
   },
 };
+
+const raleway = Raleway({ subsets: ["latin"] });
 
 const item = {
   hidden: { opacity: 0, y: 20 },
@@ -79,7 +86,7 @@ const MajorToolsContainer = () => {
         {MajorTools.expertise.map((eachExp, index) => (
           <div
             key={index}
-            className={`w-auto h-1/2 text-white flex md:flex-col justify-center items-center`}
+            className={`w-auto md:w-full h-1/2 text-white flex md:flex-col justify-center items-center`}
           >
             <div
               className={`text-5xl md:text-8xl font-bold bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent`}
@@ -157,10 +164,10 @@ const WhatsBrewingItems = () => {
                 : ""
             }
             transition={{
-              duration: 2, // Duration of one pulse
-              repeat: Infinity, // Infinite pulses
-              repeatType: "loop", // Loop the animation
-              ease: "easeInOut", // Smooth animation
+              duration: 2,
+              repeat: Infinity,
+              repeatType: "loop",
+              ease: "easeInOut",
             }}
             className={`${eachCert.status === "upcoming" && `opacity-25`}`}
           >
@@ -230,7 +237,7 @@ const ToolsInfoContainer = () => {
 export default function ToolsPage() {
   return (
     <section
-      className={`h-full w-full items-center flex flex-col bg-black ${raleway.className} overflow-y-scroll`}
+      className={`relative h-full md:h-screen w-full items-center flex flex-col bg-black ${raleway.className} overflow-y-scroll`}
     >
       <ToolsHeadingContainer />
       <ToolsInfoContainer />

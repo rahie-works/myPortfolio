@@ -1,72 +1,82 @@
-import { ExperienceData } from "./ExperienceData";
+"use client";
 import { Raleway } from "next/font/google";
 import { motion } from "framer-motion";
-
 import React from "react";
+
+// icons
 import { LiaExternalLinkAltSolid } from "react-icons/lia";
-import { getLogo } from "../utils/GetLogoUtil";
+
+// utils
+import { getLogo } from "../../utils/GetLogoUtil";
+
+// constants
+import { ExperienceNumber } from "@/app/constants/careerData";
+import { ExperienceData } from "../../constants/experienceData";
+
+// type
+import { ExpDataType } from "@/app/types/experienceDataType";
 
 const raleway = Raleway({ subsets: ["latin"] });
 
-const ExperienceNumber: Record<string, number> = {
-  expYears: 4,
-  projects: 8,
-  clients: 15,
-};
-
-const DateStringBlocks = (props: any) => {
+const DateStringBlocks = ({ data }: { data: ExpDataType }) => {
   return (
     <div
       className={`w-1/7 ${raleway.className} text-xs md:text-sm text-white md:pt-5 flex flex-col items-center animate-fade-up animate-ease-in `}
     >
-      {props.data.endDate ? (
-        <p>{props.data.endDate}</p>
+      {data.endDate ? (
+        <p>{data.endDate}</p>
       ) : (
         <div className="w-4 h-4 bg-transparent border-2 border-white rounded-full"></div>
       )}
       <div className="w-[1px] md:w-[2px] bg-white flex-grow "></div>
-      <p className="mr-3">{props.data.startDate}</p>
+      <p className="mr-3">{data.startDate}</p>
     </div>
   );
 };
 
-const ExperienceBlock = (props: any) => {
+const ExperienceBlock = ({
+  data,
+  index,
+}: {
+  data: ExpDataType;
+  index: number;
+}) => {
   return (
     <motion.div
       className="w-full h-full flex justify-center z-10 mb-10 md:mb-0"
       initial="hidden"
       whileInView="visible"
-      key={props?.index}
+      key={index}
       variants={{
         hidden: { opacity: 0, y: 20 },
         visible: { opacity: 1, y: 0, transition: { duration: 2 } },
       }}
     >
-      <DateStringBlocks data={props.data} />
+      <DateStringBlocks data={data} />
       <div className="w-3/4 md:w-2/3 h-full md:p-10 rounded-4xl flex flex-col md:flex-row animate-fade-up animate-ease-in">
         <div className={`w-full pb-5 md:pb-0 md:w-1/3`}>
           <div
             className={`w-full md:pb-5 ${raleway.className} text-3xl text-white `}
           >
             <p className="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">
-              {props.data.title}
+              {data.title}
             </p>
           </div>
           <div
             className={`w-full ${raleway.className} text-xl text-white flex`}
           >
-            <p>@ {props.data.company}</p>
+            <p>@ {data.company}</p>
             <LiaExternalLinkAltSolid
               className="ml-10 cursor-pointer w-6 h-6 text-blue-500"
-              title={`Click to check ${props.data.company}`}
-              onClick={() => window.open(props.data.companyUrl, "_blank")}
+              title={`Click to check ${data.company}`}
+              onClick={() => window.open(data.companyUrl, "_blank")}
             />
           </div>
 
           <p className="text-white mt-4 md:mt-8 text-sm">TECH USED</p>
           <div className="w-1/2 h-[2px] justify-left bg-white mt-1"></div>
           <div className="w-full h-1/3 grid grid-cols-5 md:grid-cols-3 gap-4 justify-center items-center md:mt-2 p-2 md:p-4">
-            {props?.data?.tech.map((eachTech: string, index: number) =>
+            {data?.tech.map((eachTech: string, index: number) =>
               getLogo({ logoName: eachTech, key: index })
             )}
           </div>
@@ -75,7 +85,7 @@ const ExperienceBlock = (props: any) => {
           <div
             className={`w-full md:px-10 ${raleway.className} md:text-lg text-white`}
           >
-            <p>{props.data.brief}</p>
+            <p>{data.brief}</p>
           </div>
         </div>
       </div>
@@ -86,6 +96,7 @@ const ExperienceBlock = (props: any) => {
 const ExperienceLargeData = () => {
   const LargeDataTitleStyle =
     "text-7xl md:text-8xl font-bold pb-2 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent";
+
   const LargeDataSubTitleStyle = "text-xs md:text-xl md:font-bold";
 
   return (
@@ -120,7 +131,7 @@ export default function CareerContents() {
       <ExperienceLargeData />
       <div className="h-full w-full overflow-y-scroll md:space-y-20 flex flex-col items-center mb-20">
         {ExperienceData.map((each, index) => (
-          <ExperienceBlock data={each} key={index} index={index} />
+          <ExperienceBlock data={each} index={index} />
         ))}
       </div>
     </section>

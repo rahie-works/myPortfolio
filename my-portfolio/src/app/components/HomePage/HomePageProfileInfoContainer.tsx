@@ -1,4 +1,7 @@
 import Image from "next/image";
+import { useRouter } from "next/navigation";
+
+// icons
 import {
   FaGithub,
   FaInstagram,
@@ -6,28 +9,17 @@ import {
   FaStackOverflow,
 } from "react-icons/fa";
 
+// constants
+import { CONNECT_PAGE } from "@/app/constants/router";
+
+// utils
+import { handleSocialClick } from "@/app/utils/useSocialNavigation";
+
 export const HomePageProfileInfoContainer = () => {
-  const handleSocialClick = (link: string) => {
-    switch (link) {
-      case "LinkedIn":
-        window.open(
-          "https://www.linkedin.com/in/raheesh-k-muhamed-8b3580129/",
-          "_blank"
-        );
-        break;
-      case "Github":
-        window.open("https://github.com/rahie-works", "_blank");
-        break;
-      case "Instagram":
-        window.open("https://www.instagram.com/raheesh_k_muhamed/", "_blank");
-        break;
-      case "StackOverflow":
-        window.open(
-          "https://stackoverflow.com/users/17244811/raheesh-kattumunda-muhamed",
-          "_blank"
-        );
-        break;
-    }
+  const router = useRouter();
+
+  const goToLetsConnect = () => {
+    router.push(CONNECT_PAGE);
   };
 
   return (
@@ -52,11 +44,23 @@ export const HomePageProfileInfoContainer = () => {
             className="text-blue-700 text-3xl md:text-4xl"
             onClick={() => handleSocialClick("LinkedIn")}
           />
-          <FaGithub className="text-white text-3xl md:text-4xl" />
-          <FaInstagram className="text-pink-700 text-3xl md:text-4xl" />
-          <FaStackOverflow className="text-red-500 text-3xl md:text-4xl" />
+          <FaGithub
+            onClick={() => handleSocialClick("Github")}
+            className="text-white text-3xl md:text-4xl"
+          />
+          <FaInstagram
+            onClick={() => handleSocialClick("Instagram")}
+            className="text-pink-700 text-3xl md:text-4xl"
+          />
+          <FaStackOverflow
+            onClick={() => handleSocialClick("StackOverflow")}
+            className="text-red-500 text-3xl md:text-4xl"
+          />
         </div>
-        <button className="border-2 border-blue-500 text-white text-lg md:text-xs p-3 rounded-lg cursor-pointer">
+        <button
+          onClick={goToLetsConnect}
+          className="border-2 border-blue-500 text-white text-lg md:text-xs p-3 rounded-lg cursor-pointer"
+        >
           Lets Connect
         </button>
       </div>

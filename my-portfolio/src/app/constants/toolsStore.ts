@@ -1,4 +1,6 @@
-export const MajorTools = {
+import { ToolsType, WhatsBrewingType } from "@/app/types/toolStore";
+
+export const MajorTools: ToolsType = {
   tech: [
     "React",
     "TypeScript",
@@ -30,7 +32,7 @@ export const MajorTools = {
   ],
 };
 
-export const MinorTools = {
+export const MinorTools: ToolsType = {
   tech: ["Java", "Swift", "Python", "SQL", "C", "Firebase"],
   expertise: [
     {
@@ -48,7 +50,7 @@ export const MinorTools = {
   ],
 };
 
-export const WhatsBrewingItemsConstants = {
+export const WhatsBrewingItemsConstants: WhatsBrewingType = {
   certifications: [
     {
       logo: "/logos/AWS_cert_practitioner.png",

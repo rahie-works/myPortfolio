@@ -1,7 +1,20 @@
-import { Raleway } from "next/font/google";
-import { CompanyList } from "./HomePageConstants";
-import { FaArrowRight } from "react-icons/fa6";
+import { useState } from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
+import { Raleway } from "next/font/google";
+
+// constants
+import { CompanyList } from "../../constants/homepage";
+import { CONNECT_PAGE, WORKS_PAGE } from "@/app/constants/router";
+import {
+  COMPANY_PORTFOLIO_TITLE,
+  HOME_PAGE_INTRO_ONE,
+  HOME_PAGE_INTRO_TWO,
+} from "@/app/constants/homepage";
+
+// icons
+import { FaArrowRight } from "react-icons/fa6";
+import { CgSpinner } from "react-icons/cg";
 
 const raleway = Raleway({ subsets: ["latin"] });
 
@@ -21,33 +34,47 @@ const HomePageSummaryHeading = () => {
       <div
         className={`${raleway.className} p-5 md:p-0 animate-fade-up flex flex-col animate-ease-in w-full text-lg text-white flex justify-center md:ml-20`}
       >
-        <p className="pb-5">
-          Passionate about developing robust, scalable, and user-focused
-          applications. I specialize in turning complex problems into elegant,
-          efficient, and innovative solutions through clean code and creative
-          engineering.{" "}
-        </p>
-        <p className="pt-5">
-          Driven by a deep curiosity to constantly improve and innovate, I am
-          committed to creating high-quality software that delivers real value.
-          I believe in the power of collaboration, continuous learning, and the
-          importance of writing code that is not only functional but also
-          maintainable and scalable.
-        </p>
+        <p className="pb-5">{HOME_PAGE_INTRO_ONE}</p>
+        <p className="pt-5">{HOME_PAGE_INTRO_TWO}</p>
       </div>
     </>
   );
 };
 
 const HomePageSummaryLinkContainer = () => {
+  const router = useRouter();
+  const [isLoadingWork, setIsLoadingWork] = useState(false);
+  const [isLoadingConnect, setIsLoadingConnect] = useState(false);
+
+  const goToLetsConnect = () => {
+    setIsLoadingConnect(true);
+    router.push(CONNECT_PAGE);
+  };
+  const goToLetsMyWorks = () => {
+    setIsLoadingWork(true);
+    router.push(WORKS_PAGE);
+  };
   return (
     <div className="w-full h-full flex md:ml-20 animate-fade-up animate-ease-in justify-center md:justify-start items-center">
-      <button className="bg-blue-700 text-white text-md p-3 mr-10 rounded-lg cursor-pointer">
-        Lets Connect
+      <button
+        onClick={goToLetsConnect}
+        className="w-auto bg-blue-700 text-white text-md p-3 mr-10 rounded-lg cursor-pointer flex items-center"
+      >
+        {"Lets Connect"}{" "}
+        {isLoadingConnect && (
+          <CgSpinner className="ml-2 animate-spin text-xl" />
+        )}
       </button>
-      <button className="text-white text-md p-2 rounded-lg flex items-center border-4 border-blue-500 cursor-pointer">
+      <button
+        onClick={goToLetsMyWorks}
+        className="text-white text-md p-2 rounded-lg flex items-center border-4 border-blue-500 cursor-pointer"
+      >
         <p className="pr-3">My works</p>
-        <FaArrowRight />
+        {isLoadingWork ? (
+          <CgSpinner className="ml-2 animate-spin text-xl" />
+        ) : (
+          <FaArrowRight />
+        )}
       </button>
     </div>
   );
@@ -56,9 +83,7 @@ const HomePageSummaryLinkContainer = () => {
 const HomePageCompanyPortfolio = () => {
   return (
     <div className="w-full h-full flex flex-col md:items-left animate-fade-up animate-ease-in ml-5 md:ml-20 overflow-hidden">
-      <p className="text-white text-md mt-5 mb-2">
-        Trusted by businesses from every corner of the globe, near and far.
-      </p>
+      <p className="text-white text-md mt-5 mb-2">{COMPANY_PORTFOLIO_TITLE}</p>
       <div className="w-full flex h-20 md:h-64 gap-20 animate-marquee whitespace-nowrap">
         {CompanyList.map((eachCompany, index) => (
           <Image

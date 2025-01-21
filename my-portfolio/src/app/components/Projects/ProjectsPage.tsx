@@ -1,7 +1,13 @@
+"use client";
 import React from "react";
 import { Raleway } from "next/font/google";
-import { MainProjects } from "./ProjectsData";
+
+// constants
+import { MainProjects } from "../../constants/projectsData";
+
+// icons
 import { LiaExternalLinkAltSolid } from "react-icons/lia";
+import { GITHUB_URL } from "@/app/constants/router";
 
 const raleway = Raleway({ subsets: ["latin"] });
 
@@ -42,9 +48,8 @@ const ProjectsInfoContainer = () => {
       </div>
       <div className="w-full md:w-1/2 h-full md:mt-5 mb-10 md:mb-0 flex text-white justify-center items-center cursor-pointer">
         <p
-          onClick={() =>
-            window.open("https://github.com/rahie-works", "_blank")
-          }
+          onClick={() => window.open(GITHUB_URL, "_blank")}
+          className="hover:underline hover:scale-105 transition-all duration:300"
         >
           Find my archived projects
         </p>
@@ -57,7 +62,7 @@ const ProjectsInfoContainer = () => {
 export default function ProjectsPage() {
   return (
     <section
-      className={`h-auto md:h-full w-full items-center flex flex-col bg-black ${raleway.className}`}
+      className={`h-auto md:h-screen w-full items-center flex flex-col bg-black ${raleway.className}`}
     >
       <ProjectHeadingContainer />
       <ProjectsInfoContainer />

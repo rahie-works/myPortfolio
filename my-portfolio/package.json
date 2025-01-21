@@ -11,7 +11,7 @@
     "build": "next build"
   },
   "dependencies": {
-    "@emailjs/browser": "^4.3.3",
+    "@emailjs/browser": "^4.4.1",
     "@next/font": "^14.2.3",
     "framer-motion": "^11.18.0",
     "lottie-react": "^2.4.0",
