@@ -84,14 +84,14 @@ const HomePageCompanyPortfolio = () => {
   return (
     <div className="w-full h-full flex flex-col md:items-left animate-fade-up animate-ease-in ml-5 md:ml-20 overflow-hidden">
       <p className="text-white text-md mt-5 mb-2">{COMPANY_PORTFOLIO_TITLE}</p>
-      <div className="w-full flex h-20 md:h-64 gap-20 animate-marquee whitespace-nowrap">
+      <div className="w-full flex h-20 md:h-64 gap-10 md:gap-20 animate-marquee whitespace-nowrap">
         {CompanyList.map((eachCompany, index) => (
           <Image
             alt={eachCompany}
             key={index}
             className="w-full h-1/2 filter grayscale"
             src={eachCompany}
-            width={100}
+            width={120}
             height={100}
           />
         ))}

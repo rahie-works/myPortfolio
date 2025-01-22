@@ -22,7 +22,7 @@ const config: Config = {
             transform: "translateX(10)",
           },
           "100%": {
-            transform: "translateX(-148%)",
+            transform: "translateX(-160%)",
           },
         },
       },
