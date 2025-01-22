@@ -221,7 +221,7 @@ const SocialConnections = () => {
 const ConnectContainer = () => {
   const lineStyle = "w-1/2 h-1 bg-white rounded-lg";
   return (
-    <div className="w-full md:w-1/2 h-full mb-5 flex flex-col justify-center items-center">
+    <div className="w-full md:w-1/2 h-full mb-5 flex flex-col justify-center items-center pb-10">
       <SocialConnections />
       <div className="w-3/4 md:w-2/3 h-full flex justify-evenly items-center mt-10 animate-fade-up animate-ease-in">
         <div className={lineStyle}></div>
@@ -236,7 +236,7 @@ const ConnectContainer = () => {
 export default function ConnectPage() {
   return (
     <section
-      className={`h-screen w-full items-center flex flex-col bg-black ${raleway.className} pb-10`}
+      className={`h-full md:h-screen w-full items-center flex flex-col bg-black ${raleway.className}`}
     >
       <AboutHeadingContainer />
       <ConnectContainer />
