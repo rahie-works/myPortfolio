@@ -12,6 +12,7 @@ import {
   FaStackOverflow,
 } from "react-icons/fa";
 import { SiMinutemailer } from "react-icons/si";
+import { CgSpinner } from "react-icons/cg";
 
 // utils
 import { handleSocialClick } from "@/app/utils/useSocialNavigation";
@@ -43,6 +44,7 @@ const ContactForm = () => {
     message: "",
   });
   const [alertVisible, setAlertVisible] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [alert, setAlert] = useState({
     message: "",
     type: AlertTypes.SUCCESS,
@@ -61,6 +63,7 @@ const ContactForm = () => {
   };
 
   const submitForm = (event: React.FormEvent) => {
+    setIsLoading(true);
     event.preventDefault();
 
     const templateParams = {
@@ -79,11 +82,9 @@ const ContactForm = () => {
         "oKxwboyUnH-h0r5bv"
       )
       .then(
-        (result) => {
-          console.log("==Email sent successfully:", result.text);
+        () => {
           setAlert({
-            message:
-              "Email Successfully Sent..! Thanks for reaching out. Will get back to soon.",
+            message: `Email Successfully Sent..! Thanks for reaching out. Will get back to you soon.`,
             type: AlertTypes.SUCCESS,
           });
           setAlertVisible(true);
@@ -96,6 +97,16 @@ const ContactForm = () => {
           });
         }
       );
+  };
+
+  const completeEmailSent = () => {
+    setAlertVisible(false);
+    setIsLoading(false);
+    setFormData({
+      name: "",
+      email: "",
+      message: "",
+    });
   };
 
   return (
@@ -112,8 +123,9 @@ const ContactForm = () => {
             type="text"
             id="name"
             name="name"
+            value={formData.name}
             onChange={handleFormFieldChange}
-            className="mt-1 block w-full p-3 md:p-5 rounded-md bg-gray-500"
+            className="mt-1 block w-full text-white p-3 md:p-5 rounded-md bg-gray-500 focus:bg-white focus:text-black"
             placeholder="Your Name"
           />
         </div>
@@ -126,8 +138,9 @@ const ContactForm = () => {
             type="email"
             id="email"
             name="email"
+            value={formData.email}
             onChange={handleFormFieldChange}
-            className="mt-1 block w-full p-3 md:p-5 bg-gray-500 rounded-md"
+            className="mt-1 block w-full p-3 text-white md:p-5 bg-gray-500 rounded-md focus:bg-white focus:text-black"
             placeholder="Your Email"
           />
         </div>
@@ -140,8 +153,9 @@ const ContactForm = () => {
             id="message"
             name="message"
             rows={10}
+            value={formData.message}
             onChange={handleFormFieldChange}
-            className="mt-1 block h-3/4 md:h-full w-full p-3 md:p-5 rounded-md bg-gray-500 focus:border-blue-500 resize-none"
+            className="mt-1 block h-3/4 text-white md:h-full w-full p-3 md:p-5 rounded-md bg-gray-500 focus:bg-white focus:text-black resize-none"
             placeholder="Your Message"
           ></textarea>
         </div>
@@ -149,11 +163,16 @@ const ContactForm = () => {
         <button
           type="submit"
           disabled={isDisabled}
-          className={`w-full flex justify-center ${
+          className={`w-full flex justify-center items-center ${
             isDisabled ? "bg-gray-500" : "bg-blue-500"
           } text-white font-medium py-2 px-4 rounded-md transition duration-300`}
         >
-          {"Send Message"} <SiMinutemailer className="text-2xl ml-5" />
+          {"Send Message"}{" "}
+          {isLoading ? (
+            <CgSpinner className="ml-2 animate-spin text-xl" />
+          ) : (
+            <SiMinutemailer className="text-2xl ml-5" />
+          )}
         </button>
       </form>
       <div
@@ -165,7 +184,7 @@ const ContactForm = () => {
           <Alert
             message={alert.message}
             type={alert.type}
-            onClose={() => setAlertVisible(false)}
+            onClose={() => completeEmailSent()}
           />
         )}
       </div>
