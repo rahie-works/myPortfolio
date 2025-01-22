@@ -131,7 +131,7 @@ export default function CareerContents() {
       <ExperienceLargeData />
       <div className="h-full w-full overflow-y-scroll md:space-y-20 flex flex-col items-center mb-20">
         {ExperienceData.map((each, index) => (
-          <ExperienceBlock data={each} index={index} />
+          <ExperienceBlock key={index} data={each} index={index} />
         ))}
       </div>
     </section>
