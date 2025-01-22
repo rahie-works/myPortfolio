@@ -34,6 +34,7 @@ const ProjectsInfoContainer = () => {
           >
             <video
               src={eachproject.video}
+              autoPlay
               loop
               muted
               className="w-full object-cover rounded-xl animate-fade-up animate-ease-in"
