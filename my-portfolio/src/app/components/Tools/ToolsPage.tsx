@@ -56,7 +56,7 @@ const MajorToolsContainer = () => {
       <div className="h-1/2 flex justify-center">
         <motion.div
           className={`w-full md:w-3/4 h-full 
-          grid grid-cols-5 gap-4 justify-center md:py-4 
+          grid grid-cols-3 py-5 md:grid-cols-5 gap-4 justify-center md:py-4 
           bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-xl p-3`}
           initial="hidden"
           animate="show"
@@ -81,7 +81,7 @@ const MajorToolsContainer = () => {
         </motion.div>
       </div>
       <div
-        className={`w-full h-1/3 md:h-1/4 ${raleway.className} grid grid-cols-2 gap-4 md:flex justify-center items-center animate-fade-up animate-ease-in`}
+        className={`w-full h-2/3 my-5 md:h-1/4 ${raleway.className} grid grid-cols-2 gap-4 md:flex justify-center items-center animate-fade-up animate-ease-in`}
       >
         {MajorTools.expertise.map((eachExp, index) => (
           <div
@@ -187,7 +187,7 @@ const WhatsBrewingItems = () => {
 const WhatsBrewing = () => {
   return (
     <div
-      className={`w-full h-2/3 md:h-full text-white flex flex-col text-3xl md:text-8xl font-bold justify-center items-center ${raleway.className}`}
+      className={`w-full pt-10 md:pt-0 h-2/3 md:h-full text-white flex flex-col text-3xl md:text-8xl font-bold justify-center items-center ${raleway.className}`}
     >
       <div className="py-10">
         <span className=" animate-fade-up animate-ease-in">{"< What's"}</span>
@@ -203,7 +203,7 @@ const WhatsBrewing = () => {
 const ToolsInfoContainer = () => {
   return (
     <div className="w-3/4 h-full mb-10">
-      <div className="w-full flex justify-center items-center my-5">
+      <div className="w-full flex justify-center items-center my-10">
         <div
           style={{ animationDelay: "0.5s" }}
           className="flex-1 h-1 bg-white rounded"
@@ -219,7 +219,7 @@ const ToolsInfoContainer = () => {
         ></div>
       </div>
       <MajorToolsContainer />
-      <div className="w-full flex justify-center items-center mb-5">
+      <div className="w-full flex justify-center items-center my-10">
         <div className="flex-1 h-1 bg-white rounded"></div>
         <MdHandyman className="text-white text-xl md:text-3xl md:ml-5 animate-fade-up animate-ease-in" />
         <p className="mx-2 md:mx-4 text-white text-lg whitespace-nowrap animate-fade-up animate-ease-in">

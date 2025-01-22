@@ -236,7 +236,7 @@ const ConnectContainer = () => {
 export default function ConnectPage() {
   return (
     <section
-      className={`h-full md:h-screen w-full items-center flex flex-col bg-black ${raleway.className}`}
+      className={`h-screen w-full items-center flex flex-col bg-black ${raleway.className} pb-10`}
     >
       <AboutHeadingContainer />
       <ConnectContainer />
