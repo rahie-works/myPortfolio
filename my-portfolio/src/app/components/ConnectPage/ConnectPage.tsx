@@ -18,7 +18,7 @@ import { CgSpinner } from "react-icons/cg";
 import { handleSocialClick } from "@/app/utils/useSocialNavigation";
 
 // constants
-import { LINKS } from "@/app/constants/enums";
+import { EMAILJS_KEYS, LINKS } from "@/app/constants/enums";
 import { AlertTypes } from "@/app/constants/alert";
 import Alert from "../Alert/Alert";
 
@@ -76,10 +76,10 @@ const ContactForm = () => {
 
     emailjs
       .send(
-        "service_9p7m7hl",
-        "template_qzoalqr",
+        EMAILJS_KEYS.SERVICE_KEY,
+        EMAILJS_KEYS.TEMPLATE_KEY,
         templateParams,
-        "oKxwboyUnH-h0r5bv"
+        EMAILJS_KEYS.PUBLIC_KEY
       )
       .then(
         () => {
