@@ -24,11 +24,8 @@ export const ExperienceData: ExpDataType[] = [
       "aws",
     ],
     companyUrl: "https://www.applydigital.com/",
-    brief: `Currently leading a Next.js Identity project for a major sports organization, I focus on registration, authentication, data management, privacy, consents, purchase and various other flows using top-notch tools like SAP Gigya, OneTrust, Datadog, and Synacor. 
-      With expertise in analytics, accessibillity, and integration of third-party providers, I am actively collaborating on both mobile and web development. 
-      As one of the key players, I contribute to the development of multiple backend repos for the project, leveraging REST APIs, Postman, comprehensive documentation, and various testing procedures.
-      With a solid foundation in React, React Native, TypeScript, and backend technologies, I’ve contributed to process optimization and knowledge sharing across teams.
-      As I approach my next career level, I continue to grow through leadership, communication, and hands-on technical expertise.`,
+    brief: `Leading a Next.js Identity project for a major sports organization, I focus on registration, authentication, data management, privacy, consents, and purchase flows using tools like SAP Gigya, OneTrust, Datadog, and Synacor. With expertise in analytics, accessibility, and third-party integrations, I contribute to both mobile and web development.
+    A key player in developing backend repositories, I work extensively with REST APIs, Postman, documentation, and testing processes. Leveraging my skills in React, React Native, TypeScript, and backend technologies, I drive process optimization and knowledge sharing across teams while honing leadership and technical expertise as I progress to the next career level.`,
   },
   {
     title: "React Native Developer",
@@ -74,11 +71,8 @@ export const ExperienceData: ExpDataType[] = [
     logo: "/logos/corbiz.png",
     tech: ["react", "android", "ios", "contentful", "javascript", "github"],
     companyUrl: "https://www.facebook.com/corbizsolutions/?locale=eu_ES",
-    brief: `I contributed significantly to building a strong team to develop a robust CRM platform for our clients. My role involved assisting in the creation of a platform that streamlined client interactions, as well as lead generation and management processes. 
-        I developed a user-friendly web interface using JavaScript, HTML, and CSS to enhance communication with clients. 
-        Additionally, I supported senior developers and managers in developing and managing databases to store client files and history. I regularly conducted code reviews, ensuring quality standards were met, and updated the interface to incorporate new features and improvements, aligning with the evolving needs of the employer. 
-        As a courtesy, I recently helped the team by developing a React-based web application for their new Commerce Institute, further contributing to the company’s growth and initiatives.
-      `,
+    brief: `I played a key role in building a robust CRM platform that streamlined client interactions, lead generation, and management. I developed a user-friendly web interface using JavaScript, HTML, and CSS to enhance client communication and collaborated with senior developers to manage databases for client files and history.
+    I conducted code reviews to uphold quality standards and implemented feature updates to meet evolving business needs. Additionally, I contributed to the company’s growth by developing a React-based web application for their new Commerce Institute, supporting key initiatives and driving innovation.`,
   },
 ];
 
