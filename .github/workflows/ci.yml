@@ -24,7 +24,7 @@ jobs:
           cache: "yarn"
 
       - name: Install dependencies
-        run: yarn ci
+        run: yarn install
         env:
           CI: true
 
