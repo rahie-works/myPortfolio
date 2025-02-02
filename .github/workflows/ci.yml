@@ -58,7 +58,7 @@ jobs:
           cache: "yarn"
 
       - name: Install Vercel CLI
-        run: yarn install -g vercel
+        run: yarn global add vercel
 
       - name: Deploy to Vercel (Production)
         run: vercel --prod --token=${{ secrets.VERCEL_TOKEN }}
