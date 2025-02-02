@@ -12,6 +12,14 @@ jobs:
   build:
     name: Build & Test
     runs-on: ubuntu-latest
+    env:
+      FIREBASE_PROJECT_ID: ${{ secrets.FIREBASE_PROJECT_ID }}
+      FIREBASE_CLIENT_EMAIL: ${{ secrets.FIREBASE_CLIENT_EMAIL }}
+      FIREBASE_PRIVATE_KEY: ${{ secrets.FIREBASE_PRIVATE_KEY }}
+      FIREBASE_DATABASE_URL: ${{ secrets.FIREBASE_DATABASE_URL }}
+      EMAILJS_SERVICE_KEY: ${{secrets.EMAILJS_SERVICE_KEY}}
+      EMAILJS_TEMPLATE_KEY: ${{secrets.EMAILJS_TEMPLATE_KEY}}
+      EMAILJS_PUBLIC_KEY: ${{secrets.EMAILJS_PUBLIC_KEY}}
 
     steps:
       - name: Checkout repository
