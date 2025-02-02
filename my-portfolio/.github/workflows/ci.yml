@@ -1,0 +1,59 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    name: Build & Test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: "yarn"
+
+      - name: Install dependencies
+        run: yarn ci
+        env:
+          CI: true
+
+      - name: Run Biome Lint
+        run: yarn run lint
+
+      - name: Run Tests (Optional)
+        run: yarn test
+
+      - name: Build Next.js Project
+        run: yarn run build
+
+  deploy:
+    name: Deploy to Vercel
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: "yarn"
+
+      - name: Install Vercel CLI
+        run: yarn install -g vercel
+
+      - name: Deploy to Vercel (Production)
+        run: vercel --prod --token=${{ secrets.VERCEL_TOKEN }}

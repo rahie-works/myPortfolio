@@ -14,8 +14,13 @@ import { CONNECT_PAGE } from "@/app/constants/router";
 
 // utils
 import { handleSocialClick } from "@/app/utils/useSocialNavigation";
+import { ProfileInfoType } from "@/app/types/homePageContentTypes";
 
-export const HomePageProfileInfoContainer = () => {
+export const HomePageProfileInfoContainer = ({
+  profileInfo,
+}: {
+  profileInfo: ProfileInfoType;
+}) => {
   const router = useRouter();
 
   const goToLetsConnect = () => {
@@ -32,12 +37,12 @@ export const HomePageProfileInfoContainer = () => {
         height={200}
       />
       <p className="text-white text-3xl md:text-2xl mt-5 mb-5">
-        Raheesh Muhamed
+        {profileInfo.name}
       </p>
       <div className="w-full h-full md:h-1/2 flex flex-col items-center gap-10 md:gap-0 md:justify-around">
         <div className="text-white text-lg flex flex-col items-center gap-5 md:gap-0">
-          <p className="text-white text-sm">Full Stack Software Engineer</p>
-          <p className="text-sm">Ontario, CA</p>
+          <p className="text-white text-sm">{profileInfo.title}</p>
+          <p className="text-sm">{profileInfo.location}</p>
         </div>
         <div className="w-full flex justify-center gap-16 md:gap-5">
           <FaLinkedin
@@ -61,7 +66,7 @@ export const HomePageProfileInfoContainer = () => {
           onClick={goToLetsConnect}
           className="border-2 border-blue-500 text-white text-lg md:text-xs p-3 rounded-lg cursor-pointer"
         >
-          Lets Connect
+          {profileInfo.buttonText}
         </button>
       </div>
     </div>

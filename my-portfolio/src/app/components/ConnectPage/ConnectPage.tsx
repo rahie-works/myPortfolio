@@ -18,7 +18,7 @@ import { CgSpinner } from "react-icons/cg";
 import { handleSocialClick } from "@/app/utils/useSocialNavigation";
 
 // constants
-import { EMAILJS_KEYS, LINKS } from "@/app/constants/enums";
+import {LINKS } from "@/app/constants/enums";
 import { AlertTypes } from "@/app/constants/alert";
 import Alert from "../Alert/Alert";
 
@@ -51,6 +51,10 @@ const ContactForm = () => {
   });
   const [isDisabled, setIsDisabled] = useState(true);
 
+  const SERVICE_KEY = process.env.EMAILJS_SERVICE_KEY || "";
+  const TEMPLATE_KEY = process.env.EMAILJS_TEMPLATE_KEY || "";
+  const PUBLIC_KEY = process.env.EMAILJS_PUBLIC_KEY || "";
+
   const handleFormFieldChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
@@ -76,10 +80,10 @@ const ContactForm = () => {
 
     emailjs
       .send(
-        EMAILJS_KEYS.SERVICE_KEY,
-        EMAILJS_KEYS.TEMPLATE_KEY,
+        SERVICE_KEY,
+        TEMPLATE_KEY,
         templateParams,
-        EMAILJS_KEYS.PUBLIC_KEY
+        PUBLIC_KEY
       )
       .then(
         () => {
@@ -236,7 +240,7 @@ const ConnectContainer = () => {
 export default function ConnectPage() {
   return (
     <section
-      className={`h-full md:h-screen w-full items-center flex flex-col bg-black ${raleway.className}`}
+      className={`h-screen w-full items-center flex flex-col bg-black ${raleway.className}`}
     >
       <AboutHeadingContainer />
       <ConnectContainer />

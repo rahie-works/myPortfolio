@@ -12,9 +12,3 @@ export enum LINKS {
   INSTAGRAM = "Instagram",
   STACKOVERFLOW = "StackOverflow",
 }
-
-export enum EMAILJS_KEYS {
-  SERVICE_KEY = "service_9p7m7hl",
-  TEMPLATE_KEY = "template_qzoalqr",
-  PUBLIC_KEY = "oKxwboyUnH-h0r5bv",
-}
