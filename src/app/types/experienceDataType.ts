@@ -1,4 +1,4 @@
-export type ExpDataType = {
+export type ExperienceDetailsType = {
   title: string;
   startDate: string;
   endDate: null | string;
@@ -7,9 +7,25 @@ export type ExpDataType = {
   logo: string;
   brief: string;
   tech: string[];
+}
+
+export type ExpDataType = {
+  id: string;
+  experienceData: ExperienceDetailsType[];
 };
 
-export type ImageListType = {
-  logo: string;
-  alt: string;
-};
+export type ExperienceLargedataType = {
+  id: string;
+  clients: {
+    count: number;
+    desc: string;
+  },
+  expYears: {
+    years: number;
+    desc: string;
+  },
+  projects: {
+    count: number;
+    desc: string;
+  }
+}
