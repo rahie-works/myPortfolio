@@ -1,24 +1,22 @@
 "use client";
 import { Raleway } from "next/font/google";
 import { motion } from "framer-motion";
-import React from "react";
+import {useState, useEffect} from "react";
 
 // icons
 import { LiaExternalLinkAltSolid } from "react-icons/lia";
+import { CgSpinner } from "react-icons/cg";
 
 // utils
 import { getLogo } from "../../utils/GetLogoUtil";
+import { fetchCareerPageData } from "@/app/utils/dbHandler/fetchCareerPageData";
 
-// constants
-import { ExperienceNumber } from "@/app/constants/careerData";
-import { ExperienceData } from "../../constants/experienceData";
-
-// type
-import { ExpDataType } from "@/app/types/experienceDataType";
+// types
+import { ExpDataType, ExperienceDetailsType, ExperienceLargedataType } from "@/app/types/experienceDataType";
 
 const raleway = Raleway({ subsets: ["latin"] });
 
-const DateStringBlocks = ({ data }: { data: ExpDataType }) => {
+const DateStringBlocks = ({ data }: { data: ExperienceDetailsType }) => {
   return (
     <div
       className={`w-1/7 ${raleway.className} text-xs md:text-sm text-white md:pt-5 flex flex-col items-center animate-fade-up animate-ease-in `}
@@ -38,7 +36,7 @@ const ExperienceBlock = ({
   data,
   index,
 }: {
-  data: ExpDataType;
+  data: ExperienceDetailsType;
   index: number;
 }) => {
   return (
@@ -93,7 +91,7 @@ const ExperienceBlock = ({
   );
 };
 
-const ExperienceLargeData = () => {
+const ExperienceLargeData = ({largeData}: {largeData: ExperienceLargedataType}) => {
   const LargeDataTitleStyle =
     "text-7xl md:text-8xl font-bold pb-2 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent";
 
@@ -106,31 +104,49 @@ const ExperienceLargeData = () => {
       <div
         className={`w-1/3 h-full text-white flex flex-col justify-center items-center`}
       >
-        <div className={LargeDataTitleStyle}>+{ExperienceNumber.expYears}</div>
-        <div className={LargeDataSubTitleStyle}>Years of Experience</div>
+        <div className={LargeDataTitleStyle}>+{largeData.expYears.years}</div>
+        <div className={LargeDataSubTitleStyle}>{largeData.expYears.desc}</div>
       </div>
       <div
         className={`w-1/3 h-full text-9xl text-white flex flex-col justify-center items-center`}
       >
-        <div className={LargeDataTitleStyle}>+{ExperienceNumber.projects}</div>
-        <div className={LargeDataSubTitleStyle}>Projects Completed</div>
+        <div className={LargeDataTitleStyle}>+{largeData.projects.count}</div>
+        <div className={LargeDataSubTitleStyle}>{largeData.projects.desc}</div>
       </div>
       <div
         className={`w-1/3 h-full text-white flex flex-col justify-center items-center`}
       >
-        <div className={LargeDataTitleStyle}>+{ExperienceNumber.clients}</div>
-        <div className={LargeDataSubTitleStyle}>Satisfied Clients</div>
+        <div className={LargeDataTitleStyle}>+{largeData.clients.count}</div>
+        <div className={LargeDataSubTitleStyle}>{largeData.clients.desc}</div>
       </div>
     </div>
   );
 };
 
 export default function CareerContents() {
+  const [data, setData] = useState<{ expLargeData: ExperienceLargedataType | null; expData: ExpDataType | null }>({
+    expLargeData: null,
+    expData: null,
+  })
+
+  const [isLoading, setIsLoading] = useState(true)
+
+  useEffect(() => {
+    fetchCareerPageData({
+      setData,
+      setIsLoading,
+    })
+  },[])
+
+  if(isLoading || !data.expData || !data.expLargeData) {
+    return <CgSpinner className="ml-2 animate-spin text-6xl text-white" />;
+  }
+
   return (
     <section className="relative h-screen w-full items-center flex flex-col bg-black">
-      <ExperienceLargeData />
+      <ExperienceLargeData largeData={data.expLargeData}/>
       <div className="h-full w-full overflow-y-scroll md:space-y-20 flex flex-col items-center mb-20">
-        {ExperienceData.map((each, index) => (
+        {data.expData.experienceData.map((each, index) => (
           <ExperienceBlock key={index} data={each} index={index} />
         ))}
       </div>
