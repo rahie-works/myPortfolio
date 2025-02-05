@@ -1,5 +1,5 @@
 "use client";
-import { useRef } from "react";
+import { useRef, useEffect, useState } from "react";
 import Image from "next/image";
 import { Raleway } from "next/font/google";
 import { motion } from "framer-motion";
@@ -7,16 +7,15 @@ import { motion } from "framer-motion";
 // icons
 import { ImPower } from "react-icons/im";
 import { MdHandyman } from "react-icons/md";
-
-// constants
-import {
-  MajorTools,
-  MinorTools,
-  WhatsBrewingItemsConstants,
-} from "../../constants/toolsStore";
+import { CgSpinner } from "react-icons/cg";
 
 // utils
 import { getLogo } from "../../utils/GetLogoUtil";
+import { fetchToolsPageData } from "@/app/utils/dbHandler/fetchToolsPageData";
+
+// types
+import { CertificationsType, HeadingTitleType, ToolsType, WhatsBrewingType } from "@/app/types/toolStore";
+
 
 const container = {
   hidden: { opacity: 0 },
@@ -35,22 +34,22 @@ const item = {
   show: { opacity: 1, y: 0 },
 };
 
-const ToolsHeadingContainer = () => {
+const ToolsHeadingContainer = ({title}:{title: HeadingTitleType | null}) => {
   return (
     <div
       className={`w-full h-full text-4xl md:text-8xl md:px-32 pt-40 pb-16 text-white flex font-bold ${raleway.className} animate-fade-up animate-ease-in items-center justify-center`}
     >
       <span className={`${raleway.className} animate-fade-up animate-ease-in`}>
-        {"< My Tech"}
+        {title?.title[0]}
       </span>
       <span className="text-blue-500 animate-fade-up animate-ease-in">
-        {"Stack />"}
+      {title?.title[1]}
       </span>
     </div>
   );
 };
 
-const MajorToolsContainer = () => {
+const MajorToolsContainer = ({majorToolsContents}:{majorToolsContents : ToolsType | null}) => {
   return (
     <div className="w-full h-3/4">
       <div className="h-1/2 flex justify-center">
@@ -62,7 +61,7 @@ const MajorToolsContainer = () => {
           animate="show"
           variants={container}
         >
-          {MajorTools.tech.map((eachTech, index) => (
+          {majorToolsContents?.tech.map((eachTech, index) => (
             <motion.div
               key={index}
               className="rounded shadow-2xl flex flex-col justify-evenly items-center"
@@ -83,7 +82,7 @@ const MajorToolsContainer = () => {
       <div
         className={`w-full h-2/3 my-5 md:h-1/4 ${raleway.className} grid grid-cols-2 gap-4 md:flex justify-center items-center animate-fade-up animate-ease-in`}
       >
-        {MajorTools.expertise.map((eachExp, index) => (
+        {majorToolsContents?.expertise.map((eachExp, index) => (
           <div
             key={index}
             className={`w-auto md:w-full h-1/2 text-white flex md:flex-col justify-center items-center`}
@@ -103,14 +102,14 @@ const MajorToolsContainer = () => {
   );
 };
 
-const SupportToolsContainer = () => {
+const SupportToolsContainer = ({supportToolsData}:{supportToolsData: ToolsType | null}) => {
   const scrollRef = useRef(null);
   return (
     <div
       ref={scrollRef}
       className="w-full p-3 h-1/3 md:h-1/5 grid md:grid-cols-6 grid-cols-3 gap-3 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-xl"
     >
-      {MinorTools.tech.map((eachTech, index) => (
+      {supportToolsData?.tech.map((eachTech, index) => (
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -135,7 +134,7 @@ const SupportToolsContainer = () => {
   );
 };
 
-const WhatsBrewingItems = () => {
+const WhatsBrewingItems = ({certifications}:{certifications: CertificationsType[] | undefined}) => {
   const scrollRef = useRef(null);
   return (
     <motion.div
@@ -145,7 +144,7 @@ const WhatsBrewingItems = () => {
       variants={container}
       viewport={{ root: scrollRef, amount: 0.5 }}
     >
-      {WhatsBrewingItemsConstants.certifications.map((eachCert, index) => (
+      {certifications?.map((eachCert, index) => (
         <motion.div
           ref={scrollRef}
           initial="hidden"
@@ -184,23 +183,33 @@ const WhatsBrewingItems = () => {
   );
 };
 
-const WhatsBrewing = () => {
+const WhatsBrewing = ({whatsBrewingContent}:{whatsBrewingContent: WhatsBrewingType | null}) => {
   return (
     <div
       className={`w-full pt-10 md:pt-0 h-2/3 md:h-full text-white flex flex-col text-3xl md:text-8xl font-bold justify-center items-center ${raleway.className}`}
     >
       <div className="py-10">
-        <span className=" animate-fade-up animate-ease-in">{"< What's"}</span>
+        <span className=" animate-fade-up animate-ease-in">{whatsBrewingContent?.title[0]}</span>
         <span className="text-blue-500 animate-fade-up animate-ease-in">
-          {"Brewing />"}
+          {whatsBrewingContent?.title[1]}
         </span>
       </div>
-      <WhatsBrewingItems />
+      <WhatsBrewingItems certifications={whatsBrewingContent?.certifications}/>
     </div>
   );
 };
 
-const ToolsInfoContainer = () => {
+const ToolsInfoContainer = ({
+  dividerTitle,
+  majorToolsContents,
+  supportToolsData,
+  whatsBrewingContent
+}:{
+  dividerTitle: HeadingTitleType | null;
+  majorToolsContents: ToolsType | null;
+  supportToolsData: ToolsType | null;
+  whatsBrewingContent: WhatsBrewingType | null;
+}) => {
   return (
     <div className="w-3/4 h-full mb-10">
       <div className="w-full flex justify-center items-center my-10">
@@ -210,7 +219,7 @@ const ToolsInfoContainer = () => {
         ></div>
         <ImPower className="text-white text-xl md:text-3xl md:ml-5 animate-fade-up animate-ease-in" />
         <p className="mx-2 md:mx-4 text-white text-lg whitespace-nowrap animate-fade-up animate-ease-in">
-          My Power Tools Stack
+          {dividerTitle?.title[0]}
         </p>
         <ImPower className="text-white text-xl md:text-3xl md:mr-5 animate-fade-up animate-ease-in" />
         <div
@@ -218,29 +227,66 @@ const ToolsInfoContainer = () => {
           className="flex-1 h-1 bg-white rounded"
         ></div>
       </div>
-      <MajorToolsContainer />
+      <MajorToolsContainer majorToolsContents={majorToolsContents}/>
       <div className="w-full flex justify-center items-center my-10">
         <div className="flex-1 h-1 bg-white rounded"></div>
         <MdHandyman className="text-white text-xl md:text-3xl md:ml-5 animate-fade-up animate-ease-in" />
         <p className="mx-2 md:mx-4 text-white text-lg whitespace-nowrap animate-fade-up animate-ease-in">
-          My other support stack
+        {dividerTitle?.title[1]}
         </p>
         <MdHandyman className="text-white text-xl md:text-3xl md:mr-5 animate-fade-up animate-ease-in" />
         <div className="flex-1 h-1 bg-white rounded"></div>
       </div>
-      <SupportToolsContainer />
-      <WhatsBrewing />
+      <SupportToolsContainer supportToolsData={supportToolsData}/>
+      <WhatsBrewing whatsBrewingContent={whatsBrewingContent}/>
     </div>
   );
 };
 
 export default function ToolsPage() {
+
+  const [data, setData] = useState<{
+    majorToolsData: ToolsType | null; 
+    supportToolsData: ToolsType | null; 
+    toolsDividerTitle: HeadingTitleType | null;
+    toolsPageHeadings:  HeadingTitleType | null;
+    whatsBrewingContent: WhatsBrewingType | null;
+  }>({
+    majorToolsData: null,
+    supportToolsData: null,
+    toolsDividerTitle: null,
+    toolsPageHeadings: null,
+    whatsBrewingContent: null,
+  })
+
+  const [isLoading, setIsLoading] = useState(true)
+
+  useEffect(() => {
+    fetchToolsPageData({
+      setData,
+      setIsLoading,
+    })
+  },[])
+
+  const checkDataCaptured = () => {
+    return Object.values(data).some((value) => value === null)
+  }
+
+  if(isLoading || checkDataCaptured()) {
+    return <CgSpinner className="ml-2 animate-spin text-6xl text-black" />;
+  }
+
   return (
     <section
       className={`relative h-full md:h-screen w-full items-center flex flex-col bg-black ${raleway.className} overflow-y-scroll`}
     >
-      <ToolsHeadingContainer />
-      <ToolsInfoContainer />
+      <ToolsHeadingContainer title={data.toolsPageHeadings}/>
+      <ToolsInfoContainer 
+        dividerTitle={data.toolsDividerTitle}
+        majorToolsContents={data.majorToolsData}
+        supportToolsData={data.supportToolsData}
+        whatsBrewingContent={data.whatsBrewingContent}
+      />
     </section>
   );
 }

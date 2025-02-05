@@ -3,16 +3,24 @@ type ExpertiseType = {
   desc: string;
 };
 export type ToolsType = {
+  id: string;
   tech: Array<string>;
   expertise: ExpertiseType[];
 };
 
-type CertificationsType = {
+export type CertificationsType = {
   logo: string;
   status: string;
   name: string;
 };
 
 export type WhatsBrewingType = {
+  id: string;
   certifications: CertificationsType[];
+  title: string[];
 };
+
+export type HeadingTitleType = {
+  id: string;
+  title: string[];
+}

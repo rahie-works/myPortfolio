@@ -24,3 +24,12 @@ export enum CAREER_DB_IDS {
   EXP_DATA_ID = "experienceDataArray",
   EXP_LARGE_DATA_ID = "experienceLargedata"
 }
+
+export enum TOOLSPAGE_DB_IDS {
+  TOOLSPAGE_COLLECTION_ID = "toolPageContents",
+  MAJORTOOLS_CONTAINER_ID = "majorToolsContainer",
+  MINORTOOLS_CONTAINER_ID = "minorToolsContainer",
+  TOOLSINFO_DIVIDER_ID = "toolsInfoDividers",
+  TOOLSPAGE_HEADING_CONTENTS_ID = "toolsPageHeadingContents",
+  WHATS_BREWING_CONTAINER = "whatsBrewingContainer"
+}
