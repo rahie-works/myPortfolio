@@ -1,32 +1,45 @@
 "use client";
-import React from "react";
+import React, {useState, useEffect} from "react";
 import { Raleway } from "next/font/google";
 
 // constants
-import { MainProjects } from "../../constants/projectsData";
+import { GITHUB_URL } from "@/app/constants/router";
 
 // icons
 import { LiaExternalLinkAltSolid } from "react-icons/lia";
-import { GITHUB_URL } from "@/app/constants/router";
+import { CgSpinner } from "react-icons/cg";
+
+// types
+import { ProjectDataType } from "@/app/types/projectData";
+
+// utils
+import { fetchProjectPageData } from "@/app/utils/dbHandler/fetchProjectPageData";
+
 
 const raleway = Raleway({ subsets: ["latin"] });
 
-const ProjectHeadingContainer = () => {
+const ProjectHeadingContainer = ({title}:{title: string[] | null}) => {
   return (
     <div
       className={`w-full h-1/4 text-5xl md:text-8xl mt-32 text-white flex font-bold ${raleway.className} animate-fade-up animate-ease-in justify-center items-center`}
     >
-      <span>{"< My"}</span>
-      <span className="text-blue-500 ml-5">{"Works />"}</span>
+      <span>{title?.[0]}</span>
+      <span className="text-blue-500 ml-5">{title?.[1]}</span>
     </div>
   );
 };
 
-const ProjectsInfoContainer = () => {
+const ProjectsInfoContainer = ({
+  mainProjects,
+  archivedText
+}:{
+  mainProjects: ProjectDataType[] | null;
+  archivedText: string | null
+}) => {
   return (
     <div className="w-full h-full items-center flex flex-col justify-center pt-20 md:pt-0 animate-fade-up animate-ease-in">
       <div className="w-full md:w-3/4 h-full flex flex-col md:flex-row md:justify-evenly items-center">
-        {MainProjects.map((eachproject, index) => (
+        {mainProjects?.map((eachproject, index) => (
           <div
             key={index}
             className={`w-3/4 md:w-1/3 h-full mb-20 md:mb-0 md:p-2 flex flex-col rounded-xl shadow-md transition-all duration-500 text-white text-center cursor-pointer hover:scale-105 hover:shadow-lg hover:bg-gray-900 text-3xl ${raleway.className}}`}
@@ -51,7 +64,7 @@ const ProjectsInfoContainer = () => {
           onClick={() => window.open(GITHUB_URL, "_blank")}
           className="hover:underline hover:scale-105 transition-all duration:300"
         >
-          Find my archived projects
+          {archivedText}
         </p>
         <LiaExternalLinkAltSolid className="md:ml-3 text-2xl  md:text-xl" />
       </div>
@@ -60,12 +73,37 @@ const ProjectsInfoContainer = () => {
 };
 
 export default function ProjectsPage() {
+
+  const [data, setData] = useState<{
+    majorProjectsData: ProjectDataType[] | null; 
+    projectTitles: Array<string> | null; 
+    archivedText: string | null;
+  }>({
+    majorProjectsData: null,
+    projectTitles: null,
+    archivedText: null,
+  })
+
+  useEffect(() => {
+    fetchProjectPageData({
+      setData,
+      setIsLoading
+    })
+  },[])
+
+  const [isLoading, setIsLoading] = useState(true)
+
+
+  if(isLoading || !data?.majorProjectsData) {
+    return <CgSpinner className="ml-2 animate-spin text-6xl text-black" />;
+  }
+
   return (
     <section
       className={`h-auto md:h-screen w-full items-center flex flex-col bg-black ${raleway.className}`}
     >
-      <ProjectHeadingContainer />
-      <ProjectsInfoContainer />
+      <ProjectHeadingContainer title={data.projectTitles} />
+      <ProjectsInfoContainer mainProjects={data.majorProjectsData} archivedText={data.archivedText}/>
     </section>
   );
 }

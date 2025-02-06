@@ -17,6 +17,7 @@ export enum HOMEPAGE_DB_IDS {
   HOMEPAGE_COLLECTION_ID = "homePageProfileContents",
   PROFILE_INFO_ID = "homePageProfileInfoContents",
   SUMMARY_INFO_ID = "homePageProfileSummaryContainer",
+  EXTERRNAL_LINKS_ID = "externalLinks",
 }
 
 export enum CAREER_DB_IDS {
@@ -32,4 +33,9 @@ export enum TOOLSPAGE_DB_IDS {
   TOOLSINFO_DIVIDER_ID = "toolsInfoDividers",
   TOOLSPAGE_HEADING_CONTENTS_ID = "toolsPageHeadingContents",
   WHATS_BREWING_CONTAINER = "whatsBrewingContainer"
+}
+
+export enum PROJECTPAGE_DB_IDS {
+  PROJECTPAGE_COLLECTION_ID = "projectContents",
+  PROJECT_CONTAINER_ID = "projectPageContainer"
 }

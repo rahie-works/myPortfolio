@@ -47,18 +47,18 @@ export const HomePageProfileInfoContainer = ({
         <div className="w-full flex justify-center gap-16 md:gap-5">
           <FaLinkedin
             className="text-blue-700 text-3xl md:text-4xl"
-            onClick={() => handleSocialClick("LinkedIn")}
+            onClick={() => handleSocialClick(profileInfo.socialLinks.linkedIn)}
           />
           <FaGithub
-            onClick={() => handleSocialClick("Github")}
+            onClick={() => handleSocialClick(profileInfo.socialLinks.github)}
             className="text-white text-3xl md:text-4xl"
           />
           <FaInstagram
-            onClick={() => handleSocialClick("Instagram")}
+            onClick={() => handleSocialClick(profileInfo.socialLinks.instagram)}
             className="text-pink-700 text-3xl md:text-4xl"
           />
           <FaStackOverflow
-            onClick={() => handleSocialClick("StackOverflow")}
+            onClick={() => handleSocialClick(profileInfo.socialLinks.stackoverflow)}
             className="text-red-500 text-3xl md:text-4xl"
           />
         </div>

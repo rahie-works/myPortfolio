@@ -1,6 +1,6 @@
 "use client";
 import { Raleway } from "next/font/google";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 const raleway = Raleway({ subsets: ["latin"] });
 import emailjs from "@emailjs/browser";
 
@@ -21,6 +21,8 @@ import { handleSocialClick } from "@/app/utils/useSocialNavigation";
 import {LINKS } from "@/app/constants/enums";
 import { AlertTypes } from "@/app/constants/alert";
 import Alert from "../Alert/Alert";
+import { fetchExternalLinks } from "@/app/utils/dbHandler/fetchExternalLinks";
+import { ExternalLinks } from "@/app/types/homePageContentTypes";
 
 const AboutHeadingContainer = () => {
   return (
@@ -196,37 +198,37 @@ const ContactForm = () => {
   );
 };
 
-const SocialConnections = () => {
+const SocialConnections = ({externalLinks}:{externalLinks: ExternalLinks}) => {
   const socialIconStyle =
     "cursor-pointer hover:scale-105 transition-all duration-300";
 
   return (
     <div className="w-full h-full flex justify-evenly items-center mt-5 text-4xl animate-fade-up animate-ease-in">
       <FaLinkedin
-        onClick={() => handleSocialClick(LINKS.LINKEDIN)}
+        onClick={() => handleSocialClick(externalLinks.linkedIn)}
         className={`text-blue-700 ${socialIconStyle}`}
       />
       <FaGithub
-        onClick={() => handleSocialClick(LINKS.GITHUB)}
+        onClick={() => handleSocialClick(externalLinks.github)}
         className={`text-white ${socialIconStyle}`}
       />
       <FaInstagram
-        onClick={() => handleSocialClick(LINKS.INSTAGRAM)}
+        onClick={() => handleSocialClick(externalLinks.instagram)}
         className={`text-pink-700 ${socialIconStyle}`}
       />
       <FaStackOverflow
-        onClick={() => handleSocialClick(LINKS.INSTAGRAM)}
+        onClick={() => handleSocialClick(externalLinks.stackoverflow)}
         className={`text-red-500 ${socialIconStyle}`}
       />
     </div>
   );
 };
 
-const ConnectContainer = () => {
+const ConnectContainer = ({externalLinks} : {externalLinks : ExternalLinks}) => {
   const lineStyle = "w-1/2 h-1 bg-white rounded-lg";
   return (
     <div className="w-full md:w-1/2 h-full mb-5 flex flex-col justify-center items-center pb-10">
-      <SocialConnections />
+      <SocialConnections externalLinks={externalLinks}/>
       <div className="w-3/4 md:w-2/3 h-full flex justify-evenly items-center mt-10 animate-fade-up animate-ease-in">
         <div className={lineStyle}></div>
         <p className="text-white font-bold px-3">OR</p>
@@ -238,12 +240,27 @@ const ConnectContainer = () => {
 };
 
 export default function ConnectPage() {
+
+  const [data, setData] = useState<{externalLinks: ExternalLinks | null}>({
+    externalLinks: null,
+  })
+
+  const [isLoading, setIsLoading] = useState(true)
+
+  useEffect(() => {
+    fetchExternalLinks({setData, setIsLoading})
+  }, []);
+
+  if (isLoading || !data.externalLinks) {
+    return <CgSpinner className="ml-2 animate-spin text-6xl text-white" />;
+  }
+
   return (
     <section
       className={`h-screen w-full items-center flex flex-col bg-black ${raleway.className}`}
     >
       <AboutHeadingContainer />
-      <ConnectContainer />
+      <ConnectContainer externalLinks={data.externalLinks} />
     </section>
   );
 }
