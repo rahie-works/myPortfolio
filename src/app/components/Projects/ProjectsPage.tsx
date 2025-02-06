@@ -2,18 +2,17 @@
 import React, {useState, useEffect} from "react";
 import { Raleway } from "next/font/google";
 
-// constants
-import { GITHUB_URL } from "@/app/constants/router";
-
 // icons
 import { LiaExternalLinkAltSolid } from "react-icons/lia";
 import { CgSpinner } from "react-icons/cg";
 
 // types
 import { ProjectDataType } from "@/app/types/projectData";
+import { ExternalLinks } from "@/app/types/homePageContentTypes";
 
 // utils
 import { fetchProjectPageData } from "@/app/utils/dbHandler/fetchProjectPageData";
+import { fetchExternalLinks } from "@/app/utils/dbHandler/fetchExternalLinks";
 
 
 const raleway = Raleway({ subsets: ["latin"] });
@@ -31,10 +30,12 @@ const ProjectHeadingContainer = ({title}:{title: string[] | null}) => {
 
 const ProjectsInfoContainer = ({
   mainProjects,
-  archivedText
+  archivedText,
+  githubLink
 }:{
   mainProjects: ProjectDataType[] | null;
   archivedText: string | null
+  githubLink: ExternalLinks | null;
 }) => {
   return (
     <div className="w-full h-full items-center flex flex-col justify-center pt-20 md:pt-0 animate-fade-up animate-ease-in">
@@ -61,7 +62,7 @@ const ProjectsInfoContainer = ({
       </div>
       <div className="w-full md:w-1/2 h-full md:mt-5 mb-10 md:mb-0 flex text-white justify-center items-center cursor-pointer">
         <p
-          onClick={() => window.open(GITHUB_URL, "_blank")}
+          onClick={() => window.open(githubLink?.github, "_blank")}
           className="hover:underline hover:scale-105 transition-all duration:300"
         >
           {archivedText}
@@ -84,14 +85,22 @@ export default function ProjectsPage() {
     archivedText: null,
   })
 
+  const [isLoading, setIsLoading] = useState(true)
+
+  const [githubLink, setGithubLink] = useState<{externalLinks: ExternalLinks | null}>({
+    externalLinks: null,
+  })
+
   useEffect(() => {
     fetchProjectPageData({
       setData,
       setIsLoading
     })
+    fetchExternalLinks({
+      setData: setGithubLink,
+      setIsLoading: () => {},
+    })
   },[])
-
-  const [isLoading, setIsLoading] = useState(true)
 
 
   if(isLoading || !data?.majorProjectsData) {
@@ -103,7 +112,7 @@ export default function ProjectsPage() {
       className={`h-auto md:h-screen w-full items-center flex flex-col bg-black ${raleway.className}`}
     >
       <ProjectHeadingContainer title={data.projectTitles} />
-      <ProjectsInfoContainer mainProjects={data.majorProjectsData} archivedText={data.archivedText}/>
+      <ProjectsInfoContainer mainProjects={data.majorProjectsData} githubLink={githubLink.externalLinks} archivedText={data.archivedText}/>
     </section>
   );
 }
