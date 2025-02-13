@@ -29,7 +29,11 @@ export const HomePageProfileContainer = () => {
   }, []);
 
   if (isLoading || !data.profileInfo || !data.summaryData) {
-    return <CgSpinner className="ml-2 animate-spin text-6xl text-white" />;
+    return (
+      <div className="flex bg-black h-screen w-full items-center justify-center">
+        <CgSpinner className="ml-2 animate-spin text-6xl text-white" />
+      </div>
+    )
   }
 
   return (

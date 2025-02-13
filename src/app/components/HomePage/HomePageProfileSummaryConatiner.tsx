@@ -85,15 +85,15 @@ const HomePageSummaryLinkContainer = ({ links }: { links: string[] }) => {
 const HomePageCompanyPortfolio = ({ title }: { title: string }) => {
   return (
     <div className="w-full h-full flex flex-col md:items-left animate-fade-up animate-ease-in ml-5 md:ml-20 overflow-hidden">
-      <p className="text-white text-md mt-5 mb-2">{title}</p>
+      <p className="text-white text-md mt-5 mb-5">{title}</p>
       <div className="w-full flex h-20 md:h-64 gap-10 md:gap-20 animate-marquee whitespace-nowrap">
         {CompanyList.map((eachCompany, index) => (
           <Image
             alt={eachCompany}
             key={index}
-            className="w-full h-1/2 filter grayscale"
+            className={`${eachCompany === "/logos/walletifai.png" ? "w-1/3 h-1/3" : "w-1/2 h-1/2"} filter grayscale`}
             src={eachCompany}
-            width={120}
+            width={100}
             height={100}
           />
         ))}
@@ -101,7 +101,7 @@ const HomePageCompanyPortfolio = ({ title }: { title: string }) => {
           <Image
             alt={eachCompany}
             key={index}
-            className="w-full h-1/2 filter grayscale"
+            className={`${eachCompany === "/logos/walletifai.png" ? "w-1/3 h-1/3" : "w-1/2 h-1/2"} filter grayscale`}
             src={eachCompany}
             width={100}
             height={100}

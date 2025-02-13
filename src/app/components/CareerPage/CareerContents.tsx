@@ -138,18 +138,19 @@ export default function CareerContents() {
     })
   },[])
 
-  if(isLoading || !data.expData || !data.expLargeData) {
-    return <CgSpinner className="ml-2 animate-spin text-6xl text-white" />;
-  }
-
   return (
-    <section className="relative h-screen w-full items-center flex flex-col bg-black">
-      <ExperienceLargeData largeData={data.expLargeData}/>
-      <div className="h-full w-full overflow-y-scroll md:space-y-20 flex flex-col items-center mb-20">
-        {data.expData.experienceData.map((each, index) => (
-          <ExperienceBlock key={index} data={each} index={index} />
-        ))}
-      </div>
+    <section className="relative h-screen w-full items-center flex flex-col bg-black justify-center">
+      {(isLoading || !data.expData || !data.expLargeData ) ? 
+      <CgSpinner className="ml-2 animate-spin text-6xl text-white" /> : 
+      <>
+        <ExperienceLargeData largeData={data.expLargeData}/>
+        <div className="h-full w-full overflow-y-scroll md:space-y-20 flex flex-col items-center mb-20">
+          {data.expData.experienceData.map((each, index) => (
+            <ExperienceBlock key={index} data={each} index={index} />
+          ))}
+        </div>
+      </>
+      }
     </section>
   );
 }

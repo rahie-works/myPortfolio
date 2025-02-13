@@ -80,7 +80,7 @@ const MajorToolsContainer = ({majorToolsContents}:{majorToolsContents : ToolsTyp
         </motion.div>
       </div>
       <div
-        className={`w-full h-2/3 my-5 md:h-1/4 ${raleway.className} grid grid-cols-2 gap-4 md:flex justify-center items-center animate-fade-up animate-ease-in`}
+        className={`w-full h-1/2 my-5 md:h-1/4 ${raleway.className} grid grid-cols-2 gap-4 md:flex justify-center items-center animate-fade-up animate-ease-in`}
       >
         {majorToolsContents?.expertise.map((eachExp, index) => (
           <div
@@ -107,7 +107,7 @@ const SupportToolsContainer = ({supportToolsData}:{supportToolsData: ToolsType |
   return (
     <div
       ref={scrollRef}
-      className="w-full p-3 h-1/3 md:h-1/5 grid md:grid-cols-6 grid-cols-3 gap-3 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-xl"
+      className="w-full p-3 h-1/3 md:h-1/5 grid md:grid-cols-5 grid-cols-3 gap-3 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-xl"
     >
       {supportToolsData?.tech.map((eachTech, index) => (
         <motion.div
@@ -268,25 +268,26 @@ export default function ToolsPage() {
     })
   },[])
 
-  const checkDataCaptured = () => {
-    return Object.values(data).some((value) => value === null)
-  }
-
-  if(isLoading || checkDataCaptured()) {
-    return <CgSpinner className="ml-2 animate-spin text-6xl text-black" />;
-  }
+  const checkDataCaptured = () => Object.values(data).some((value) => value === null)
 
   return (
     <section
-      className={`relative h-full md:h-screen w-full items-center flex flex-col bg-black ${raleway.className} overflow-y-scroll`}
+      className={`relative h-screen w-full items-center flex flex-col bg-black ${raleway.className} overflow-y-scroll`}
     >
-      <ToolsHeadingContainer title={data.toolsPageHeadings}/>
-      <ToolsInfoContainer 
-        dividerTitle={data.toolsDividerTitle}
-        majorToolsContents={data.majorToolsData}
-        supportToolsData={data.supportToolsData}
-        whatsBrewingContent={data.whatsBrewingContent}
-      />
+      {(isLoading || checkDataCaptured()) ?
+        <div className="flex bg-black h-screen w-full items-center justify-center">
+          <CgSpinner className="ml-2 animate-spin text-6xl text-white" /> 
+        </div> :
+        <>
+          <ToolsHeadingContainer title={data.toolsPageHeadings}/>
+          <ToolsInfoContainer 
+            dividerTitle={data.toolsDividerTitle}
+            majorToolsContents={data.majorToolsData}
+            supportToolsData={data.supportToolsData}
+            whatsBrewingContent={data.whatsBrewingContent}
+          />
+        </>
+      }
     </section>
   );
 }

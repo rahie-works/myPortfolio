@@ -18,7 +18,6 @@ import { CgSpinner } from "react-icons/cg";
 import { handleSocialClick } from "@/app/utils/useSocialNavigation";
 
 // constants
-import {LINKS } from "@/app/constants/enums";
 import { AlertTypes } from "@/app/constants/alert";
 import Alert from "../Alert/Alert";
 import { fetchExternalLinks } from "@/app/utils/dbHandler/fetchExternalLinks";
@@ -27,13 +26,13 @@ import { ExternalLinks } from "@/app/types/homePageContentTypes";
 const AboutHeadingContainer = () => {
   return (
     <div
-      className={`w-full h-full mt-32 md:mt-0 md:mb-10 text-4xl md:text-8xl text-white flex font-bold ${raleway.className} animate-fade-up animate-ease-in justify-center items-center md:items-end`}
+      className={`w-full h-auto mt-32 md:mb-10 text-4xl md:text-8xl text-white flex font-bold ${raleway.className} animate-fade-up animate-ease-in justify-center items-center md:items-end`}
     >
       <span className={`${raleway.className} animate-fade-up animate-ease-in`}>
-        {"< Let's"}
+        {"< Let's "}
       </span>
       <span className="text-blue-500 animate-fade-up animate-ease-in">
-        {"Talk />"}
+        {" Talk />"}
       </span>
     </div>
   );
@@ -158,7 +157,7 @@ const ContactForm = () => {
           <textarea
             id="message"
             name="message"
-            rows={10}
+            rows={7}
             value={formData.message}
             onChange={handleFormFieldChange}
             className="mt-1 block h-3/4 text-white md:h-full w-full p-3 md:p-5 rounded-md bg-gray-500 focus:bg-white focus:text-black resize-none"
@@ -251,16 +250,17 @@ export default function ConnectPage() {
     fetchExternalLinks({setData, setIsLoading})
   }, []);
 
-  if (isLoading || !data.externalLinks) {
-    return <CgSpinner className="ml-2 animate-spin text-6xl text-white" />;
-  }
-
   return (
     <section
-      className={`h-screen w-full items-center flex flex-col bg-black ${raleway.className}`}
+      className={`relative h-screen w-full items-center justify-center flex flex-col bg-black ${raleway.className}`}
     >
-      <AboutHeadingContainer />
-      <ConnectContainer externalLinks={data.externalLinks} />
+      {(isLoading || !data.externalLinks) ?
+        <CgSpinner className="ml-2 animate-spin text-6xl text-white" /> :
+        <>
+          <AboutHeadingContainer />
+          <ConnectContainer externalLinks={data.externalLinks} />
+        </>
+      }
     </section>
   );
 }

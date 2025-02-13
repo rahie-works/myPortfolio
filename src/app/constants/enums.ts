@@ -6,13 +6,6 @@ export enum PAGES {
   CONNECT = "connect",
 }
 
-export enum LINKS {
-  LINKEDIN = "LinkedIn",
-  GITHUB = "Github",
-  INSTAGRAM = "Instagram",
-  STACKOVERFLOW = "StackOverflow",
-}
-
 export enum HOMEPAGE_DB_IDS {
   HOMEPAGE_COLLECTION_ID = "homePageProfileContents",
   PROFILE_INFO_ID = "homePageProfileInfoContents",
