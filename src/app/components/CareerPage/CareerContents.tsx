@@ -71,7 +71,7 @@ const ExperienceBlock = ({
             />
           </div>
 
-          <p className="text-white mt-4 md:mt-8 text-sm">TECH USED</p>
+          <p className="text-white mt-4 md:mt-8 text-sm">TECH STACK</p>
           <div className="w-1/2 h-[2px] justify-left bg-white mt-1"></div>
           <div className="w-full h-1/3 grid grid-cols-5 md:grid-cols-3 gap-4 justify-center items-center md:mt-2 p-2 md:p-4">
             {data?.tech.map((eachTech: string, index: number) =>
