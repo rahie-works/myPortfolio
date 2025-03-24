@@ -35,11 +35,11 @@ const ProjectsInfoContainer = ({
 }) => {
   return (
     <div className="w-full h-full items-center flex flex-col justify-center py-20 animate-fade-up animate-ease-in">
-      <div className="w-full h-auto my-16 flex flex-col justify-center items-center">
+      <div className="w-full md:w-3/4 h-auto my-16 flex flex-col md:grid grid-cols-2 gap-4 justify-center items-center">
         {mainProjects?.map((eachproject, index) => (
           <div
             key={index}
-            className={`w-3/4 md:w-2/3 h-full mb-20 md:mb-0 
+            className={`w-3/4 md:w-full h-full mb-20 md:mb-0 
               md:p-5 py-5 flex flex-col rounded-xl shadow-md transition-all 
               duration-500 text-white text-center cursor-pointer justify-center items-center
               hover:scale-105 hover:shadow-lg hover:bg-gray-900 text-3xl ${raleway.className}}`}
@@ -61,7 +61,7 @@ const ProjectsInfoContainer = ({
               />
             }
             <h2 className="text-2xl py-5">{eachproject.name}</h2>
-            <p className="text-sm text-justify mt-4 md:mt-0 py-5 animate-fade-up animate-ease-in">
+            <p className="text-sm text-justify mt-4 md:mt-0 py-5 px-3 animate-fade-up animate-ease-in">
               {eachproject.desc}
             </p>
           </div>

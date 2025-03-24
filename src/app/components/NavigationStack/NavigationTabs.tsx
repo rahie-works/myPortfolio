@@ -89,6 +89,10 @@ export default function NavigationTabs() {
             );
           })}
         </div>
+        {/* <div className="flex flex-row w-full h-full text-md justify-end items-center mx-10">
+          <button className="p-3 text-white rounded-lg border-[2px] 
+            border-white hover:bg-white hover:text-black transform-all duration-500">Get My Resume</button>
+        </div> */}
       </div>
     </div>
   );
